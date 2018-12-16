@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta charset="utf-8"></meta>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+	<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+	<meta name="description" content=""></meta>
+	<meta name="author" content=""></meta>
+	<title>老人近况</title>
+	
+	<link href="../css/bootstrap.min.css" rel="stylesheet"></link>
+	<link href="../css/metisMenu.min.css" rel="stylesheet"></link>
+	<link href="../css/dataTables.bootstrap.css" rel="stylesheet"></link>
+	<link href="../css/sb-admin-2.css" rel="stylesheet"></link>
+	<link href="../css/font-awesome.min.css" rel="stylesheet" type="text/css"></link>
+	<link href="../css/boot-crm.css" rel="stylesheet" type="text/css"></link>
+	
+	<link href="../plugins/datetimepicker/bootstrap-datetimepicker.min.css" rel="stylesheet" />
+
+	<script src="../plugins/jQuery/jquery-2.2.3.min.js"></script>
+	<script src="../plugins/bootstrap/js/bootstrap.min.js"></script>
+	
+    <script src="../plugins/datetimepicker/moment-with-locales.js"></script>
+    <script src="../plugins/datetimepicker/bootstrap-datetimepicker.min.js"></script>
+    <script src="../plugins/datetimepicker/bootstrap-datetimepicker.zh-CN.js"></script>
+
+
+ 	<!-- 引入angular的js -->
+    <script type="text/javascript" src="../plugins/angularjs/angular.min.js"></script>
+    
+    <script type="text/javascript" src="../js/base.js?version=001"></script>
+    <script type="text/javascript" src="../js/service/baseCodeService.js?version=001"></script>
+    <script type="text/javascript" src="../js/service/abilityItemService.js?version=001"></script>
+    <script type="text/javascript" src="../js/service/oldmanRecentMessageService.js?version=001"></script>
+    <script type="text/javascript" src="../js/controller/baseController.js?version=001"></script>
+    <script type="text/javascript" src="../js/controller/oldmanRecentMessageController.js?version=001"></script>
+	
+	<style type="text/css">
+		table{
+		     border: 0px solid transparent !important;
+		 }
+		 
+		.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th{
+			border-top: 0px solid #ddd;		 
+		}
+		
+		tr>td>div>label{
+			width:110px;
+		}
+		
+		.breadcrumb > .unactive{
+			color:#ccc;
+		}
+			
+	</style>
+</head>
+
+<body ng-app="xhManager" ng-controller="oldmanRecentMessageController" ng-init="findAbilityItem(5);findAbilityItem(6);entity={}">
+	
+	
+	
+	<div id="wrapper">
+		
+		<div>
+	          <ol class="breadcrumb">
+	              <li class="active"><span><b>基本信息</b></span></li>
+	              <li class="active"><span><b>联系人信息</b></span></li>
+	              <li class="active"><span><b>日常生活能力</b></span></li>
+	              <li class="active"><span><b>精神状态</b></span></li>
+	              <li class="active"><span><b>感知觉与沟通</b></span></li>
+	              <li class="active"><span><b>社会参与</b></span></li>
+	              <li class="active"><span><b>老人近况</b></span></li>
+	              <li class="unactive"><span><b>评估标准</b></span></li>
+	              <li class="unactive"><span><b>结果确认</b></span></li>
+	          </ol>
+		</div>
+		
+		<div id="page-wrapper">
+			<div class="row">
+				<div class="col-lg-12">
+					<h3><b style="font-family:华文隶书; color:green">疾病诊断信息</b></h3>
+				</div>
+			</div>
+			
+		<form  class="form-inline" >		
+			<div class="panel panel-default row-fluid" >
+				<div class="panel-body" >
+						<table class="table" >
+							<tr  ng-repeat="item in abilityItemList[5]">
+								<td>
+									<div class="form-group col-sm-12">
+										<label for="customerFrom">{{item.name}}</label> 
+										<span  ng-repeat="option in item.optionList">
+							      			<input type="radio" ng-value="option.id" ng-model="$parent.entity[item.note]">{{option.optionName}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							             </span>
+									</div>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</form>
+			
+			
+			<div class="row">
+				<div class="col-lg-12">
+					<h3><b style="font-family:华文隶书; color:green">近30天意外事件</b></h3>
+				</div>
+			</div>
+			
+			<form  class="form-inline" >
+				<div class="panel panel-default row-fluid" >
+					<div class="panel-body" >
+						<table class="table" >
+							<tr  ng-repeat="item in abilityItemList[6]">
+								<td>
+									<div class="form-group col-sm-12">
+										<label for="customerFrom">
+											{{item.name}}<font color="#ccc">({{item.description}})</font>&nbsp;&nbsp;
+										</label>
+										<span ng-repeat="option in item.optionList">
+											<input type="radio" ng-value="option.id" ng-model="$parent.entity[item.note]">{{option.optionName}}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										</span>
+									</div>
+								</td>
+							</tr>
+						</table>
+					</div>
+				</div>
+			</form>
+		
+
+		  <!-- 底部按钮组 -->	
+		  <div class="btn-toolbar list-toolbar" >
+		      <a class="btn btn-danger" style="float:right" ng-click="entity={}">清空
+		      	<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+		      </a>
+		      
+		      <a class="btn btn-success" style="float:right" ng-click="save()">下一步
+		      	<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+		      </a>
+		  </div>	
+			
+		</div>
+	</div>
+		  
+	  	
+</body>
+</html>

@@ -1,0 +1,478 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta charset="utf-8"></meta>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+	<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+	<meta name="description" content=""></meta>
+	<meta name="author" content=""></meta>
+	<title>档案管理3</title>
+	
+	<link href="../css/bootstrap.min.css" rel="stylesheet"></link>
+	<script src="../plugins/jQuery/jquery-2.2.3.min.js"></script>
+	<script src="../plugins/bootstrap/js/bootstrap.min.js"></script>
+	
+	<link rel="stylesheet" href="../plugins/adminLTE/css/AdminLTE.css">
+    <link rel="stylesheet" href="../plugins/adminLTE/css/skins/_all-skins.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+	
+	
+	<!-- 引入angular的js -->
+    <script type="text/javascript" src="../plugins/angularjs/angular.min.js"></script>
+    
+    <script type="text/javascript" src="../js/base.js"></script>
+    <script type="text/javascript" src="../js/service/baseServiceService.js"></script>
+    <script type="text/javascript" src="../js/service/baseCodeService.js"></script>
+    <script type="text/javascript" src="../js/controller/baseServiceController.js"></script>
+	
+	<style type="text/css">
+		table tr td{
+		    text-align:left;
+		    line-height: 25px;  
+		    vertical-align:middle;
+		}
+		
+		
+	</style>
+</head>
+
+<body ng-app="xhManager" ng-controller="baseServiceController" ng-init="findBaseServiceList();findBaseCodeByTypeCode('001')">
+
+	<div class="box-header with-border">
+		<h2>
+			<b style="font-family: 华文隶书; color: green">居家社区养老服务需求</b>
+		</h2>
+	</div>
+	
+	<div class="panel panel-default row-fluid" >
+		<div class="panel-body" >
+
+			<!--数据列表-->
+			<table id="dataList" class="table table-bordered">
+				<thead>
+					<tr>
+						<th colspan="2" style="text-align:center;">
+							<b><font size="4">服务需求</font></b>
+						</th>
+						<th colspan="7" style="text-align:center;">
+							<b><font size="4">服务频率</font></b>
+						</th>
+					</tr>
+				</thead>
+				
+				<tbody>
+					<tr>
+						<td rowspan="5" style="vertical-align:middle;"><b>助餐</b></td>
+						<td>营养膳食评估及膳食规划</td>
+						
+						<td ng-repeat="item in frequencyList">
+							<input type="radio"/>{{item.itemName}}
+						</td>
+						<td><input type="text"></td>
+					</tr>
+					<tr>
+						<td>制餐</td>
+						
+						
+						<td ng-repeat="item in frequencyList">
+							<input type="radio"/>{{item.itemName}}
+						</td>
+						<td><input type="text"></td>
+					</tr>
+					<tr>
+						<td>送餐</td>
+						
+						<td ng-repeat="item in frequencyList">
+							<input type="radio"/>{{item.itemName}}
+						</td>
+						<td><input type="text"></td>
+					</tr>
+					<tr>
+						<td>集中用餐</td>
+						
+						<td ng-repeat="item in frequencyList">
+							<input type="radio"/>{{item.itemName}}
+						</td>
+						<td><input type="text"></td>
+					</tr>
+					<tr>
+						<td>喂饭</td>
+						
+						<td ng-repeat="item in frequencyList">
+							<input type="radio"/>{{item.itemName}}
+						</td>
+						<td><input type="text"></td>
+					</tr>
+					
+					<!-- 助洁	 -->
+						
+					<tr>
+						<td rowspan="5" style="vertical-align:middle;"><b>助洁</b></td>
+						<td>居室卫生</td>
+						
+						<td ng-repeat="item in frequencyList">
+							<input type="radio"/>{{item.itemName}}
+						</td>
+						<td><input type="text"></td>
+					</tr>
+					<tr>
+						<td>上门助浴</td>
+						
+						
+						<td ng-repeat="item in frequencyList">
+							<input type="radio"/>{{item.itemName}}
+						</td>
+						<td><input type="text"></td>
+					</tr>
+					<tr>
+						<td>机构助浴</td>
+						
+						<td ng-repeat="item in frequencyList">
+							<input type="radio"/>{{item.itemName}}
+						</td>
+						<td><input type="text"></td>
+					</tr>
+					<tr>
+						<td>衣物清洗和消毒</td>
+						
+						<td ng-repeat="item in frequencyList">
+							<input type="radio"/>{{item.itemName}}
+						</td>
+						<td><input type="text"></td>
+					</tr>
+					<tr>
+						<td>物品整理和收纳</td>
+						
+						<td ng-repeat="item in frequencyList">
+							<input type="radio"/>{{item.itemName}}
+						</td>
+						<td><input type="text"></td>
+					</tr>
+					
+					
+					
+					<!-- 助医 -->
+					<tr>
+						<td rowspan="8" style="vertical-align:middle;"><b>助医</b></td>
+						<td>看病预约</td>
+						
+						<td ng-repeat="item in frequencyList">
+							<input type="radio"/>{{item.itemName}}
+						</td>
+						<td><input type="text"></td>
+					</tr>
+					<tr>
+						<td>生理指标监测及健康干预</td>
+						
+						
+						<td ng-repeat="item in frequencyList">
+							<input type="radio"/>{{item.itemName}}
+						</td>
+						<td><input type="text"></td>
+					</tr>
+					<tr>
+						<td>定期健康体检和能力评估</td>
+						
+						<td ng-repeat="item in frequencyList">
+							<input type="radio"/>{{item.itemName}}
+						</td>
+						<td><input type="text"></td>
+					</tr>
+					<tr>
+						<td>定期检查/给药</td>
+						
+						<td ng-repeat="item in frequencyList">
+							<input type="radio"/>{{item.itemName}}
+						</td>
+						<td><input type="text"></td>
+					</tr>
+					<tr>
+						<td>给药、观察、消毒</td>
+						
+						<td ng-repeat="item in frequencyList">
+							<input type="radio"/>{{item.itemName}}
+						</td>
+						<td><input type="text"></td>
+					</tr>
+					<tr>
+						<td>康复锻炼/护理</td>
+						
+						<td ng-repeat="item in frequencyList">
+							<input type="radio"/>{{item.itemName}}
+						</td>
+						<td><input type="text"></td>
+					</tr>
+					<tr>
+						<td>陪同就医</td>
+						
+						<td ng-repeat="item in frequencyList">
+							<input type="radio"/>{{item.itemName}}
+						</td>
+						<td><input type="text"></td>
+					</tr>
+					<tr>
+						<td>临终关怀</td>
+						
+						<td ng-repeat="item in frequencyList">
+							<input type="radio"/>{{item.itemName}}
+						</td>
+						<td><input type="text"></td>
+					</tr>
+					
+					
+					
+					
+					<!-- 康复 -->
+					<tr>
+						<td rowspan="3" style="vertical-align:middle;"><b>康复</b></td>
+						<td>运动康复</td>
+						
+						<td ng-repeat="item in frequencyList">
+							<input type="radio"/>{{item.itemName}}
+						</td>
+						<td><input type="text"></td>
+					</tr>
+					<tr>
+						<td>作业康复</td>
+						
+						
+						<td ng-repeat="item in frequencyList">
+							<input type="radio"/>{{item.itemName}}
+						</td>
+						<td><input type="text"></td>
+					</tr>
+					<tr>
+						<td>理疗康复</td>
+						
+						<td ng-repeat="item in frequencyList">
+							<input type="radio"/>{{item.itemName}}
+						</td>
+						<td><input type="text"></td>
+					</tr>
+					
+					
+					
+					
+					<!-- 安全 -->
+					<tr>
+						<td rowspan="4" style="vertical-align:middle;"><b>安全</b></td>
+						<td>安装安全防护措施</td>
+						
+						<td ng-repeat="item in frequencyList">
+							<input type="radio"/>{{item.itemName}}
+						</td>
+						<td><input type="text"></td>
+					</tr>
+					<tr>
+						<td>定期家庭安全访视</td>
+						
+						
+						<td ng-repeat="item in frequencyList">
+							<input type="radio"/>{{item.itemName}}
+						</td>
+						<td><input type="text"></td>
+					</tr>
+					<tr>
+						<td>家庭可居住维护</td>
+						
+						<td ng-repeat="item in frequencyList">
+							<input type="radio"/>{{item.itemName}}
+						</td>
+						<td><input type="text"></td>
+					</tr>
+					<tr>
+						<td>远程安全监护</td>
+						
+						<td ng-repeat="item in frequencyList">
+							<input type="radio"/>{{item.itemName}}
+						</td>
+						<td><input type="text"></td>
+					</tr>
+					
+					
+					<!-- 助急 -->
+					<tr>
+						<td rowspan="1" style="vertical-align:middle;"><b>助急</b></td>
+						<td>各类应急</td>
+						
+						<td ng-repeat="item in frequencyList">
+							<input type="radio"/>{{item.itemName}}
+						</td>
+						<td><input type="text"></td>
+					</tr>
+					
+					
+					<!-- 心理慰藉 -->
+					<tr>
+						<td rowspan="7" style="vertical-align:middle;"><b>心理慰藉</b></td>
+						<td>生活技能指导</td>
+						
+						<td ng-repeat="item in frequencyList">
+							<input type="radio"/>{{item.itemName}}
+						</td>
+						<td><input type="text"></td>
+					</tr>
+					<tr>
+						<td>关怀访视/情感支援</td>
+						
+						<td ng-repeat="item in frequencyList">
+							<input type="radio"/>{{item.itemName}}
+						</td>
+						<td><input type="text"></td>
+					</tr>
+					<tr>
+						<td>社交/生活陪伴</td>
+						
+						<td ng-repeat="item in frequencyList">
+							<input type="radio"/>{{item.itemName}}
+						</td>
+						<td><input type="text"></td>
+					</tr>
+					<tr>
+						<td>家庭文化活动及娱乐规划</td>
+						
+						<td ng-repeat="item in frequencyList">
+							<input type="radio"/>{{item.itemName}}
+						</td>
+						<td><input type="text"></td>
+					</tr>
+					<tr>
+						<td>心理咨询</td>
+						
+						<td ng-repeat="item in frequencyList">
+							<input type="radio"/>{{item.itemName}}
+						</td>
+						<td><input type="text"></td>
+					</tr>
+					<tr>
+						<td>不良情绪预防及干预</td>
+						
+						<td ng-repeat="item in frequencyList">
+							<input type="radio"/>{{item.itemName}}
+						</td>
+						<td><input type="text"></td>
+					</tr>
+					<tr>
+						<td>出行规划及交通协助</td>
+						
+						<td ng-repeat="item in frequencyList">
+							<input type="radio"/>{{item.itemName}}
+						</td>
+						<td><input type="text"></td>
+					</tr>
+					
+					
+					
+					
+					<!-- 文娱 -->
+					<tr>
+						<td rowspan="1" style="vertical-align:middle;"><b>文娱</b></td>
+						<td>歌舞、棋牌、健身操等</td>
+						
+						<td ng-repeat="item in frequencyList">
+							<input type="radio"/>{{item.itemName}}
+						</td>
+						<td><input type="text"></td>
+					</tr>
+					
+					
+					<!-- 代办 -->
+					<tr>
+						<td rowspan="1" style="vertical-align:middle;"><b>代办</b></td>
+						<td>代办各种事务</td>
+						
+						<td ng-repeat="item in frequencyList">
+							<input type="radio"/>{{item.itemName}}
+						</td>
+						<td><input type="text"></td>
+					</tr>
+					
+					
+					<!-- 托管 -->
+					<tr>
+						<td rowspan="2" style="vertical-align:middle;"><b>托管</b></td>
+						<td>日托</td>
+						
+						<td ng-repeat="item in frequencyList">
+							<input type="radio"/>{{item.itemName}}
+						</td>
+						<td><input type="text"></td>
+					</tr>
+					<tr>
+						<td>全托</td>
+						
+						<td ng-repeat="item in frequencyList">
+							<input type="radio"/>{{item.itemName}}
+						</td>
+						<td><input type="text"></td>
+					</tr>
+					
+					
+					<!-- 其他 -->
+					<tr>
+						<td rowspan="5" style="vertical-align:middle;"><b>其他</b></td>
+						<td>入住养老机构/托老所	</td>
+						
+						<td ng-repeat="item in frequencyList">
+							<input type="radio"/>{{item.itemName}}
+						</td>
+						<td><input type="text"></td>
+					</tr>
+					<tr>
+						<td>无障碍改造</td>
+						
+						<td ng-repeat="item in frequencyList">
+							<input type="radio"/>{{item.itemName}}
+						</td>
+						<td><input type="text"></td>
+					</tr>
+					<tr>
+						<td>辅具配置</td>
+						
+						<td ng-repeat="item in frequencyList">
+							<input type="radio"/>{{item.itemName}}
+						</td>
+						<td><input type="text"></td>
+					</tr>
+					<tr>
+						<td>购买长期护理保险</td>
+						
+						<td ng-repeat="item in frequencyList">
+							<input type="radio"/>{{item.itemName}}
+						</td>
+						<td><input type="text"></td>
+					</tr>
+					<tr>
+						<td>购买意外伤害责任保险</td>
+						
+						<td ng-repeat="item in frequencyList">
+							<input type="radio"/>{{item.itemName}}
+						</td>
+						<td><input type="text"></td>
+					</tr>
+					
+					
+				</tbody>
+			</table>
+			<!--数据列表/-->
+
+		</div>
+		<!-- 数据表格 /-->
+	</div>
+	
+	 <!-- 底部按钮组 -->	
+	  <div class="btn-toolbar list-toolbar" >
+	      <a class="btn btn-danger" style="float:right">清空
+	      	<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+	      </a>
+	      
+	      <a class="btn btn-success" style="float:right" href="messagelist.html">下一步
+	      	<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+	      </a>
+	  </div>
+
+</body>
+
+
+</html>

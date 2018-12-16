@@ -1,0 +1,128 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="icon" href="https://static.jianshukeji.com/highcharts/images/favicon.ico">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            /* css 代码  */
+        </style>
+        <script src="https://img.hcharts.cn/highcharts/highcharts.js"></script>
+        <script src="https://img.hcharts.cn/highcharts/modules/exporting.js"></script>
+        <script src="https://img.hcharts.cn/highcharts-plugins/highcharts-zh_CN.js"></script>
+        <script src="../plugins/bower_components/jquery/dist/jquery.min.js"></script>
+		
+		<link href="/css/buildCountTable.css" rel="stylesheet"></link>
+        <script src="/js/buildCountTable.js"></script>
+		        
+        <script>
+        $(function(){
+        	
+        	var categoryContent = ['有一定适应能力', '能适应单纯环境', '可被动接触','勉强与人交流','难以与人交流'];
+        	
+        	$.post('../summary/countSocialCommunication.action' , function(data){
+		        var chart = Highcharts.chart('container', {
+		        	credits:{
+		            	enabled:false
+		            },
+		        	chart: {
+		        		type: 'column'
+		        	},
+		        	title: {
+		        		text: '社会参与 - 交往能力统计',
+		        		style: { "color": "green", "font-family":"隶书", "fontSize":"40px"}
+		        	},
+		        	subtitle: {
+		        		text: ''
+		        	},
+		        	legend: {
+		        		align: 'right',
+		        		verticalAlign: 'middle',
+		        		layout: 'vertical'
+		        	},
+		        	xAxis: {
+		        		categories: categoryContent ,
+		        		labels: {
+		        			x: -10
+		        		},
+		        		gridLineWidth: 1,
+		        		labels: {
+		        			formatter: function () {
+		        				return this.value
+		        			},
+		        			style: {
+		        				color: '#000',
+		        				fontSize:'13px'
+		        			}
+		        		} 
+		        	},
+		        	yAxis: {
+		        		allowDecimals: false,
+		        		title: {
+		        			text: '人数'
+		        		}
+		        	},
+		        	colors:['Cyan','MediumAquamarine','GreenYellow','Khaki','DarkOrange'],
+		        	series: [{
+		        		name: '能力完好',
+		        		data: data.level_0
+		        	}, {
+		        		name: '轻度失能',
+		        		data: data.level_1
+		        	}, {
+		        		name: '中度失能',
+		        		data: data.level_2
+		        	}, {
+		        		name: '重度失能',
+		        		data: data.level_3
+		        	}],
+		        	responsive: {
+		        		rules: [{
+		        			condition: {
+		        				maxWidth: 500
+		        			},
+		        			chartOptions: {
+		        				legend: {
+		        					align: 'center',
+		        					verticalAlign: 'bottom',
+		        					layout: 'horizontal'
+		        				},
+		        				yAxis: {
+		        					labels: {
+		        						align: 'left',
+		        						x: 0,
+		        						y: -5
+		        					},
+		        					title: {
+		        						text: null
+		        					}
+		        				},
+		        				subtitle: {
+		        					text: null
+		        				},
+		        				credits: {
+		        					enabled: false
+		        				}
+		        			}
+		        		}]
+		        	}
+		        });
+        	
+        		
+		       
+        	 	 
+		        buildTable(data,categoryContent,'countTable');
+        	 	 
+        	});
+        });
+        </script>
+        
+    </head>
+    
+    <body style="background-color: white;">
+        <div id="container" style="height:80%;"></div>
+        
+        <table id="countTable" style="border-collapse: collapse;margin:0px auto;" border="1"  width="85%"></table>
+	 </body>
+	
+</html>

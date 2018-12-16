@@ -1,0 +1,258 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta charset="utf-8"></meta>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+	<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+	<meta name="description" content=""></meta>
+	<meta name="author" content=""></meta>
+	<title>结果确认</title>
+	
+	<link href="../css/bootstrap.min.css" rel="stylesheet"></link>
+	<link href="../css/metisMenu.min.css" rel="stylesheet"></link>
+	<link href="../css/dataTables.bootstrap.css" rel="stylesheet"></link>
+	<link href="../css/sb-admin-2.css" rel="stylesheet"></link>
+	<link href="../css/font-awesome.min.css" rel="stylesheet" type="text/css"></link>
+	<link href="../css/boot-crm.css" rel="stylesheet" type="text/css"></link>
+	
+	<script src="../plugins/jQuery/jquery-2.2.3.min.js"></script>
+	<script src="../plugins/bootstrap/js/bootstrap.min.js"></script>
+	
+    <!-- 引入angular的js -->
+    <script type="text/javascript" src="../plugins/angularjs/angular.min.js"></script>
+    
+    <script type="text/javascript" src="../js/base.js?version=001"></script>
+	<script type="text/javascript" src="../js/service/baseCodeService.js?version=001"></script>
+    <script type="text/javascript" src="../js/service/abilityItemService.js?version=001"></script>
+    <script type="text/javascript" src="../js/service/oldmanMessageService.js?version=001"></script>
+    <script type="text/javascript" src="../js/controller/baseController.js?version=001"></script>
+    <script type="text/javascript" src="../js/controller/oldmanMessageController.js?version=001"></script>
+	
+	<style type="text/css">
+		table tr td{
+		    text-align:left;
+		    line-height: 25px;  
+		    vertical-align:middle;
+		}
+		
+		.breadcrumb > .unactive{
+			color:#ccc;
+		}	
+	</style>
+</head>
+
+
+<body ng-app="xhManager" ng-controller="oldmanMessageController" ng-init="findOne()">
+	
+	<div id="wrapper">
+		
+		<div>
+		       <ol class="breadcrumb">
+	              <li class="active"><span><b>基本信息</b></span></li>
+	              <li class="active"><span><b>联系人信息</b></span></li>
+	              <li class="active"><span><b>日常生活能力</b></span></li>
+	              <li class="active"><span><b>精神状态</b></span></li>
+	              <li class="active"><span><b>感知觉与沟通</b></span></li>
+	              <li class="active"><span><b>社会参与</b></span></li>
+	              <li class="active"><span><b>老人近况</b></span></li>
+	              <li class="active"><span><b>评估标准</b></span></li>
+	              <li class="active"><span><b>结果确认</b></span></li>
+	          </ol>
+		</div>
+		
+		
+		<div class="box-header with-border">
+			<h2>
+				<b style="font-family: 华文隶书; color: green ;">结果确认</b>
+			</h2>
+		</div>
+		
+		<!--数据列表 1 -->
+		<div class="panel panel-default row-fluid" >
+			<div class="panel-body" >
+				<table class="table table-bordered">
+					<tbody>
+						<tr>
+							<th style="width:300px">评估编号</th>
+							<td>{{entity.oldmanMessage.id}}</td>
+						</tr>
+						
+						<tr>
+							<th>姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;名</th>
+							<td>{{entity.oldmanMessage.name}}</td>
+						</tr>
+						
+						<tr>
+							<th>姓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别</th>
+							<td>{{genderView[entity.oldmanMessage.gender]}}</td>
+						</tr>
+						
+						<tr>
+							<th>身份证号</th>
+							<td>{{entity.oldmanMessage.idCart}}</td>
+						</tr>
+						
+						<tr>
+							<th>评估机构</th>
+							<td>{{entity.linkmessage.evaluateGroup}}</td>
+						</tr>
+						
+						<tr>
+							<th>评估人</th>
+							<td>{{entity.linkmessage.evaluateName}}</td>
+						</tr>
+						
+						<tr>
+							<th rowspan="4" style="vertical-align:middle;text-align:center;">一级指标分级</th>
+							<td><b>日常生活能力</b> :   {{abilityGrade[entity.oldmanMessage.levelDailyLiving]}}</td>
+						</tr>
+						
+						<tr>
+							<td><b>精&nbsp;&nbsp;神&nbsp;&nbsp;状&nbsp;&nbsp;态</b> :   {{abilityGrade[entity.oldmanMessage.levelMentality]}}</td>
+						</tr>
+						
+						<tr>
+							<td><b>感知觉与沟通</b> :   {{abilityGrade[entity.oldmanMessage.levelPerception]}}</td>
+						</tr>
+						
+						<tr>
+							<td><b>社&nbsp;&nbsp;会&nbsp;&nbsp;参&nbsp;&nbsp;与</b> :   {{abilityGrade[entity.oldmanMessage.levelSocialPartipation]}}</td>
+						</tr>
+						
+						<tr>
+							<th>老人能力初步等级</th>
+							<td>{{abilityLevel[entity.oldmanMessage.primaryLevel]}}</td>
+						</tr>
+						
+						<tr>
+							<th>老人能力最终等级</th>
+							<td>{{abilityLevel[entity.oldmanMessage.finalLevel]}}</td>
+						</tr>
+						
+						<tr>
+							<td colspan="2" >
+								<span style="float: right">
+									<span>
+										执行评估员签字:
+										<input type='text' style='border:none;border-bottom:black solid 1px'>
+									</span>
+									
+									<br />
+									
+									<span>
+										<input type='text' style='border:none; border-bottom:black solid 1px;' size="5">年
+										<input type='text' style='border:none;border-bottom:black solid 1px' size="5">月
+										<input type='text' style='border:none;border-bottom:black solid 1px' size="5">日
+									</span>
+								</span>
+							</td>
+						</tr>
+						
+						<!-- 
+						<tr>
+							<td colspan="2" >
+								<span style="float: right">
+									<span>
+										信息提供者签字:
+										<input type='text' style='border:none;border-bottom:black solid 1px'>
+									</span>
+									
+									<br />
+									
+									<span>
+										<input type='text' style='border:none; border-bottom:black solid 1px;' size="5">年
+										<input type='text' style='border:none;border-bottom:black solid 1px' size="5">月
+										<input type='text' style='border:none;border-bottom:black solid 1px' size="5">日
+									</span>
+								</span>
+							</td>
+						</tr>
+						
+						
+						
+						<tr>
+							<td colspan="2" >
+								<span style="float: right">
+									<span>
+										家属签字:
+										<input type='text' style='border:none;border-bottom:black solid 1px'>
+									</span>
+									
+									<br />
+									
+									<span>
+										<input type='text' style='border:none; border-bottom:black solid 1px;' size="5">年
+										<input type='text' style='border:none;border-bottom:black solid 1px' size="5">月
+										<input type='text' style='border:none;border-bottom:black solid 1px' size="5">日
+									</span>
+								</span>
+							</td>
+						</tr>
+						
+						
+						<tr>
+							<th style="vertical-align:middle;text-align:center;">医嘱信息</th>
+							<td>
+								<span style="float: right">
+									<span>
+										医师签字:
+										<input type='text' style='border:none;border-bottom:black solid 1px'>
+									</span>
+									
+									<br />
+									
+									<span>
+										<input type='text' style='border:none; border-bottom:black solid 1px;' size="5">年
+										<input type='text' style='border:none;border-bottom:black solid 1px' size="5">月
+										<input type='text' style='border:none;border-bottom:black solid 1px' size="5">日
+									</span>
+							</td>
+						</tr>
+						 -->
+						
+						<tr>
+							<td colspan="2">
+								<span>
+									<b>注：老人能力初步等级划分标准：</b><br/><br/>
+									&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<b>0 能力完好</b><br/>
+									&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; 日常生活活动、精神状态、感知觉与沟通分级均为0，社会参与分级为0或1<br/><br/>
+									&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<b>1 轻度失能</b><br/>
+									&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; 日常生活活动分级为 0，但精神状态、感知觉与沟通中至少一项分级为1及以上，或社会参与的分级为2；<br/>
+									&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; 或日常生活活动分级为1，精神状态、感知觉与沟通、社会参与中至少有一项的分级为0或1<br/><br/>
+									&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<b>2 中度失能</b><br/>
+									&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; 日常生活活动分级为1，但精神状态、感知觉沟通、社会参与均为2，或有一项为3；<br/>
+									&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; 或日常生活活动分级为2，且精神状态、感知觉与沟通、社会参与中有1~2项的分级为1或2<br/><br/>
+									&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;<b>3 重度失能</b><br/>
+									&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; 日常生活活动的分级为3；<br/>
+									&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; 或日常生活活动、精神状态、感知觉与沟通、社会参与分级均为2；<br/>
+									&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; 或日常生活活动分级为2，且精神状态、感知觉与沟通、社会参与中至少有一项分级为3<br/>
+								</span>
+							</td>
+						</tr>
+						
+					</tbody>
+				</table>
+				<!--数据列表/-->
+			</div>
+		</div>
+		
+		
+		
+	  <!-- 底部按钮组 -->	
+	  <div class="btn-toolbar list-toolbar" >
+	      <a class="btn btn-success" style="float:right"  href="messagelist.html">确认
+	      	<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+	      </a>
+	      
+	      <a class="btn btn-primary" style="float:right" ng-click="downloadResult()">下载结果
+	      	<span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span>
+	      </a>
+	  </div>
+	  
+	  
+	</div>	
+</body>
+
+
+</html>

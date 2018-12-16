@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xh.mapper.BaseCodeMapper">
+	
+	<select id="findBaseCodeByTypeCode" parameterType="string" resultType="BaseCode">
+		select code_id id , code_type_code typeCode , code_type_name typeName ,
+		code_item_name itemName , code_item_code itemCode , 
+		code_sort sort , code_enable enable , code_desc des from tb_base_code
+		where code_type_code = #{typeCode} 
+		ORDER BY code_type_code ,  code_sort 
+	</select>
+	
+	
+	
+	<select id="findBaseCodeByTypeCodeList" resultType="BaseCode">
+		select code_id id , code_type_code typeCode , code_type_name typeName ,
+		code_item_name itemName , code_item_code itemCode , 
+		code_sort sort , code_enable enable , code_desc des from tb_base_code
+		<where>
+			<if test="typeCodeList!=null">
+				code_type_code in 
+				<foreach collection="typeCodeList" item="typeCode" open="(" close=")" separator=",">
+					#{typeCode}
+				</foreach>
+			</if>
+		</where>
+		
+		ORDER BY code_type_code ,  code_sort 
+	</select>
+	
+	
+	<select id="findAll" resultType="BaseCode">
+		select code_id id , code_type_code typeCode , code_type_name typeName ,
+		code_item_name itemName , code_item_code itemCode , 
+		code_sort sort , code_enable enable , code_desc des from tb_base_code
+	</select>
+	
+</mapper>

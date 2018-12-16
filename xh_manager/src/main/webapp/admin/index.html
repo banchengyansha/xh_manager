@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- 页面meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>后台管理系统</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
+    <!-- 页面meta /-->
+    <link rel="stylesheet" href="../plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../plugins/adminLTE/css/AdminLTE.css">
+    <link rel="stylesheet" href="../plugins/adminLTE/css/skins/_all-skins.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../plugins/bower_components/Ionicons/css/ionicons.min.css">
+     <link rel="stylesheet" href="../plugins/bower_components/font-awesome/css/font-awesome.min.css">
+    
+    <script src="../plugins/jQuery/jquery-2.2.3.min.js"></script>
+    <script src="../plugins/bootstrap/js/bootstrap.min.js"></script>
+  
+    <script src="../plugins/adminLTE/js/app.min.js"></script>
+    
+    
+    <script type="text/javascript" src="../plugins/angularjs/angular.min.js"></script>
+    
+    <script type="text/javascript" src="../js/base.js"></script>
+    <script type="text/javascript" src="../js/controller/indexController.js"></script>
+    <script type="text/javascript" src="../js/service/indexService.js"></script>
+    
+    
+    <script type="text/javascript">
+		 function SetIFrameHeight(){
+		  	  var iframeid=document.getElementById("iframe"); //iframe id
+		  	  if (document.getElementById){
+		  		iframeid.height =document.documentElement.clientHeight;			   	   
+			  }
+		 }
+	</script>    
+
+</head>
+
+<body class="hold-transition skin-purple sidebar-mini" ng-app="xhManager" ng-controller="indexController" ng-init="showName()">
+
+    <div class="wrapper">
+
+        <!-- 页面头部 -->
+        <header class="main-header">
+            <a href="index.html" class="logo">
+                <span class="logo-lg">
+                	<b style="font-family:隶书;color:white;font-size:4;">老年人能力评估系统</b>
+                </span>
+            </a>
+            
+            <nav class="navbar navbar-static-top">
+                <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                </a>
+                
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+                        <!-- User Account: style can be found in dropdown.less -->
+                        <li class="dropdown user user-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <img src="../img/user2-160x160.jpg" class="user-image" alt="User Image">
+                                <span class="hidden-xs">{{loginName}}</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <!-- User image -->
+                                <li class="user-header">
+                                    <img src="../img/user2-160x160.jpg" class="img-circle" alt="User Image">
+
+                                    <p>
+                                       	当前登录用户 : {{loginName}} 
+                                    </p>
+                                </li>
+                                
+                                <!-- Menu Footer-->
+                                <li class="user-footer">
+                                    <div class="pull-right">
+                                        <a href="/logout" class="btn btn-default btn-flat" >注销</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <!-- 页面头部 /-->
+        
+        
+        
+
+        <!-- 导航侧栏 -->
+        <aside class="main-sidebar">
+            <section class="sidebar">
+                <div class="user-panel">
+                </div>
+                
+                <ul class="sidebar-menu"  >
+                    <li class="header">菜单</li>
+                    
+                    <li id="admin-index">
+                    	<a href="index.html">
+                    		<i class="fa fa-dashboard"></i> 
+                    		<span>首页</span>
+                    	</a>
+                    </li>
+					
+					<li class="treeview">
+				        <a href="#">
+				        	<i class="fa fa-folder"></i> 
+				            <span>能力评估</span>
+				            <span class="pull-right-container">
+				       			<i class="fa fa-angle-left pull-right"></i>
+				   		 	</span>
+				        </a>
+				        <ul class="treeview-menu">
+				            <li id="admin-login">
+				                <a href="archive.html" target="iframe">
+				                    <i class="fa fa-edit"></i>老年人能力评估
+				                </a>
+				            </li>
+				        </ul>                        
+				    </li>
+				    
+				    
+				    <li class="treeview">
+				        <a href="#">
+				            <i class="fa fa-calendar"></i> 
+				            <span>档案管理</span>
+				            <span class="pull-right-container">
+				       			<i class="fa fa-angle-left pull-right"></i>
+				   		 	</span>
+				        </a>
+				        <ul class="treeview-menu">
+							<li id="admin-login">
+				                <a href="messagelist.html" target="iframe">
+				                    <i class="fa fa-edit"></i>档案列表
+				                </a>
+				            </li>
+				        </ul>                        
+				    </li>
+				    
+				    
+				    <!-- 概要统计 -->
+				    <li class="treeview">
+				        <a href="#">
+				            <i class="fa fa-pie-chart"></i> 
+				            <span>概要统计</span>
+				            <span class="pull-right-container">
+				       			<i class="fa fa-angle-left pull-right"></i>
+				   		 	</span>
+				        </a>
+				        <ul class="treeview-menu">
+				        	<!-- 概要统计 -->
+							<li id="admin-login">
+				                <a href="count_gender.html" target="iframe">
+				                    <i class="fa fa-pie-chart"></i>性别统计
+				                </a>
+				            </li>
+				            
+				            <li id="admin-login">
+				                <a href="count_age.html" target="iframe">
+				                    <i class="fa fa-pie-chart"></i>年龄统计
+				                </a>
+				            </li>
+				            
+				            <li id="admin-login">
+				                <a href="count_living.html" target="iframe">
+				                    <i class="fa fa-pie-chart"></i>居住情况
+				                </a>
+				            </li>
+				            
+				            <li id="admin-login">
+				                <a href="count_address.html" target="iframe">
+				                    <i class="fa fa-pie-chart"></i>区域统计
+				                </a>
+				            </li>
+				            
+				            <li id="admin-login">
+				                <a href="count_level.html" target="iframe">
+				                    <i class="fa fa-pie-chart"></i>能力等级
+				                </a>
+				            </li>
+				        </ul>                        
+				    </li>
+				    
+				    
+				    
+				    
+				    <!-- 生活能力统计 -->
+				    <li class="treeview">
+				        <a href="#">
+				            <i class="fa  fa-bar-chart"></i> 
+				            <span>生活能力</span>
+				            <span class="pull-right-container">
+				       			<i class="fa fa-angle-left pull-right"></i>
+				   		 	</span>
+				        </a>
+				        <ul class="treeview-menu">
+				        	<!-- 生活能力统计 -->
+				        	<li id="admin-login">
+				                <a href="count_living_eat.html" target="iframe">
+				                    <i class="fa  fa-bar-chart"></i>进食能力统计
+				                </a>
+				            </li>
+				            
+				            <li id="admin-login">
+				                <a href="count_living_stool.html" target="iframe">
+				                    <i class="fa  fa-bar-chart"></i>大便控制统计
+				                </a>
+				            </li>
+				            
+				            <li id="admin-login">
+				                <a href="count_living_urination.html" target="iframe">
+				                    <i class="fa  fa-bar-chart"></i>小便控制统计
+				                </a>
+				            </li>
+				            
+				            <li id="admin-login">
+				                <a href="count_living_walk.html" target="iframe">
+				                    <i class="fa  fa-bar-chart"></i>平地行走统计
+				                </a>
+				            </li>
+				            
+				        </ul>                        
+				    </li>
+				    
+				    
+				    
+				    
+				    <!-- 感知觉沟通统计 -->
+				     <li class="treeview">
+				        <a href="#">
+				            <i class="fa fa-area-chart"></i> 
+				            <span>感知觉沟通</span>
+				            <span class="pull-right-container">
+				       			<i class="fa fa-angle-left pull-right"></i>
+				   		 	</span>
+				        </a>
+				        <ul class="treeview-menu">
+				        	
+				            <!-- 感知觉与沟通 -->
+				             <li id="admin-login">
+				                <a href="count_perception_consciousness.html" target="iframe">
+				                    <i class="fa fa-area-chart"></i>意识水平统计
+				                </a>
+				            </li>
+				            
+				             <li id="admin-login">
+				                <a href="count_perception_vision.html" target="iframe">
+				                    <i class="fa fa-area-chart"></i>视力水平统计
+				                </a>
+				            </li>
+				            
+				             <li id="admin-login">
+				                <a href="count_perception_hearing.html" target="iframe">
+				                    <i class="fa fa-area-chart"></i>听力水平统计
+				                </a>
+				            </li>
+				            
+				             <li id="admin-login">
+				                <a href="count_perception_communication.html" target="iframe">
+				                    <i class="fa fa-area-chart"></i>沟通能力统计
+				                </a>
+				            </li>
+				            
+				        </ul>                        
+				    </li>
+				    
+				    
+				    
+				    
+				    
+				    
+				     <!-- 社会参与统计 -->
+				     <li class="treeview">
+				        <a href="#">
+				            <i class="fa  fa-chrome"></i> 
+				            <span>社会参与</span>
+				            <span class="pull-right-container">
+				       			<i class="fa fa-angle-left pull-right"></i>
+				   		 	</span>
+				        </a>
+				        <ul class="treeview-menu">
+				        	
+				            <!-- 社会参与 -->
+				             <li id="admin-login">
+				                <a href="count_social_living.html" target="iframe">
+				                    <i class="fa  fa-chrome"></i>生活能力统计
+				                </a>
+				            </li>
+				            
+				             <li id="admin-login">
+				                <a href="count_social_job.html" target="iframe">
+				                    <i class="fa  fa-chrome"></i>工作能力统计
+				                </a>
+				            </li>
+				            
+				             <li id="admin-login">
+				                <a href="count_social_timespace.html" target="iframe">
+				                    <i class="fa  fa-chrome"></i>时间空间定向
+				                </a>
+				            </li>
+				            
+				             <li id="admin-login">
+				                <a href="count_social_personage.html" target="iframe">
+				                    <i class="fa  fa-chrome"></i>人物定向能力
+				                </a>
+				            </li>
+				            
+				             <li id="admin-login">
+				                <a href="count_social_communication.html" target="iframe">
+				                    <i class="fa  fa-chrome"></i>社会交往能力
+				                </a>
+				            </li>
+				            
+				        </ul>                        
+				    </li>
+				    
+				    
+				    
+					
+				    <li class="treeview">
+				        <a href="#">
+				            <i class="fa fa-book"></i> 
+				            <span>系统管理</span>
+				            <span class="pull-right-container">
+				       			<i class="fa fa-angle-left pull-right"></i>
+				   		 	</span>
+				        </a>
+				        <ul class="treeview-menu">
+				
+				            <li id="admin-login">
+				                <a href="user.html" target="iframe">
+				                    <i class="fa fa-edit"></i> 用户管理
+				                </a>
+				            </li>
+							<li id="admin-login">
+				                <a href="password.html" target="iframe">
+				                    <i class="fa fa-edit"></i> 修改密码
+				                </a>
+				            </li>
+				        </ul>                        
+				    </li>
+				    
+					
+					
+                </ul>
+            </section>
+            <!-- /.sidebar -->
+        </aside>
+        <!-- 导航侧栏 /-->
+
+        <!-- 内容区域 -->
+        <div class="content-wrapper">
+			<iframe width="100%" id="iframe" name="iframe"	onload="SetIFrameHeight()" 
+					frameborder="0" src="summary.html"></iframe>
+ 
+        </div>
+        <!-- 内容区域 /-->
+
+        <!-- 底部导航 -->
+        <!-- 
+        <footer class="main-footer">
+            <div class="pull-right hidden-xs">
+                <b>Version</b> 1.0.8
+            </div>
+            <strong>Copyright &copy; 2014-2017 <a href="http://www.itcast.cn">祥和技术团队</a>.</strong> All rights reserved.
+        </footer>
+         -->
+        <!-- 底部导航 /-->
+
+    </div>
+
+
+   
+</body>
+
+</html>

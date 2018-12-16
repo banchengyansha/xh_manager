@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xh.mapper.AbilityItemMapper">
+	
+	<resultMap type="abilityItem" id="abilityItemResultMap">
+		<id property="id" column="id"></id>
+		<result property="name" column="name"/>
+		<result property="description" column="description"/>
+		<result property="part" column="part"/>
+		<result property="note" column="note"/>
+		
+		<collection property="optionList" ofType="com.xh.pojo.AbilityItemOption">
+			<id property="id" column="opt_id"/>
+			<result property="optionName" column="option_name"/>
+			<result property="score" column="score"/>
+			<result property="sort" column="sort"/>
+		</collection>
+	</resultMap>
+	
+	
+	<select id="findAllAbilityItemListById" parameterType="string" resultMap="abilityItemResultMap">
+		SELECT 
+			item.id , item.name, item.description,item.part ,item.note,
+			opt.id opt_id, opt.option_name, opt.score, opt.sort
+ 		FROM 
+ 			tb_ability_item item , tb_ability_item_option opt 
+ 		WHERE 
+ 			item.id = opt.item_id
+ 		AND 
+ 			item.part = #{value}
+ 		order by
+ 			item.id ,  opt.sort;
+	</select>
+	
+		
+</mapper>

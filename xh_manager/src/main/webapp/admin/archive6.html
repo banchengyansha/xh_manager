@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+	<meta charset="utf-8"></meta>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+	<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+	<meta name="description" content=""></meta>
+	<meta name="author" content=""></meta>
+	<title>社会参与</title>
+	
+	<link href="../css/bootstrap.min.css" rel="stylesheet"></link>
+	<link href="../css/metisMenu.min.css" rel="stylesheet"></link>
+	<link href="../css/dataTables.bootstrap.css" rel="stylesheet"></link>
+	<link href="../css/sb-admin-2.css" rel="stylesheet"></link>
+	<link href="../css/font-awesome.min.css" rel="stylesheet" type="text/css"></link>
+	<link href="../css/boot-crm.css" rel="stylesheet" type="text/css"></link>
+	
+	<script src="../plugins/jQuery/jquery-2.2.3.min.js"></script>
+	<script src="../plugins/bootstrap/js/bootstrap.min.js"></script>
+	
+	<!-- 引入angular的js -->
+    <script type="text/javascript" src="../plugins/angularjs/angular.min.js"></script>
+    
+    <script type="text/javascript" src="../js/base.js?version=001"></script>
+    <script type="text/javascript" src="../js/service/baseCodeService.js?version=001"></script>
+    <script type="text/javascript" src="../js/service/abilityItemService.js?version=001"></script>
+    <script type="text/javascript" src="../js/service/oldmanSocialParticipationService.js?version=001"></script>
+    <script type="text/javascript" src="../js/controller/baseController.js?version=001"></script>
+    <script type="text/javascript" src="../js/controller/oldmanSocialParticipationController.js?version=001"></script>
+	
+	<style type="text/css">
+		table tr td{
+		    text-align:left;
+		    line-height: 25px;  
+		    vertical-align:middle;
+		}
+		
+		.breadcrumb > .unactive{
+			color:#ccc;
+		}	
+	</style>
+</head>
+
+
+<body ng-app="xhManager" ng-controller="oldmanSocialParticipationController" ng-init="findAbilityItem(4);entity={}" >
+	
+	<div id="wrapper">
+		
+		<div>
+	           <ol class="breadcrumb">
+	              <li class="active"><span><b>基本信息</b></span></li>
+	              <li class="active"><span><b>联系人信息</b></span></li>
+	              <li class="active"><span><b>日常生活能力</b></span></li>
+	              <li class="active"><span><b>精神状态</b></span></li>
+	              <li class="active"><span><b>感知觉与沟通</b></span></li>
+	              <li class="active"><span><b>社会参与</b></span></li>
+	              <li class="unactive"><span><b>老人近况</b></span></li>
+	              <li class="unactive"><span><b>评估标准</b></span></li>
+	              <li class="unactive"><span><b>结果确认</b></span></li>
+	          </ol>
+		</div>
+		
+		<div class="box-header with-border">
+			<h3>
+				<b style="font-family: 华文隶书; color: green ;">社会参与</b>
+			</h3>
+		</div>
+					
+		<!--数据列表 4 -->
+		<div class="panel panel-default row-fluid" >
+			<div class="panel-body" >	
+				<!-- 
+				<h4>
+					<b style="font-family: 华文隶书; color: green">社会参与</b>
+				</h4>
+				 -->
+				<table id="dataList" class="table table-bordered">
+					<thead>
+						<tr>
+							<th style="text-align:center;" width="30%">
+								<b><font size="4">项目</font></b>
+							</th>
+							<!-- <th style="text-align:center;" width="20%">
+								<b><font size="4">备注</font></b>
+							</th> -->
+							<th style="text-align:center;" width="70%">
+								<b><font size="4">选项</font></b>
+							</th>
+						</tr>
+					</thead>
+					
+					<tbody>
+						<tr ng-repeat="item in abilityItemList[4]">
+							<td style="vertical-align:middle;text-align:center;">
+								<b>{{item.name}}</b>
+								<span ng-if="item.description!=null && item.description!=''">
+									({{item.description}})
+								</span>
+							</td>
+							<!-- 
+							<td style="vertical-align:middle;">
+								{{item.description}}
+							</td>
+							 -->
+							<td>
+								<div ng-repeat="option in item.optionList">
+									<input type="radio" ng-value="option.id" ng-model="$parent.entity[item.note]"/>{{option.optionName}}<br />
+								</div>
+							</td>
+						</tr>
+						
+					</tbody>
+				</table>
+			</div>
+		</div>
+			
+		<!-- 数据表格 /-->
+		
+			
+	  <!-- 底部按钮组 -->	
+	  <div class="btn-toolbar list-toolbar" >
+	      <a class="btn btn-danger" style="float:right" ng-click="entity={}">清空
+	      	<span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+	      </a>
+	      
+	      <a class="btn btn-success" style="float:right"  ng-click="save()">下一步
+	      	<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+	      </a>
+	  </div>
+	  
+	  
+	</div>	
+</body>
+
+
+</html>

@@ -1,0 +1,769 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xh.mapper.TbOldmanMessageMapper" >
+  <resultMap id="BaseResultMap" type="com.xh.pojo.TbOldmanMessage" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="evaluate_no" property="evaluateNo" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="id_cart" property="idCart" jdbcType="VARCHAR" />
+    <result column="gender" property="gender" jdbcType="CHAR" />
+    <result column="birthday" property="birthday" jdbcType="DATE" />
+    <result column="nation" property="nation" jdbcType="VARCHAR" />
+    <result column="belief" property="belief" jdbcType="INTEGER" />
+    <result column="marital_status" property="maritalStatus" jdbcType="INTEGER" />
+    <result column="social_security_card" property="socialSecurityCard" jdbcType="VARCHAR" />
+    <result column="culture__degree" property="cultureDegree" jdbcType="INTEGER" />
+    <result column="living_address" property="livingAddress" jdbcType="VARCHAR" />
+    <result column="living_condition" property="livingCondition" jdbcType="INTEGER" />
+    <result column="economic_source" property="economicSource" jdbcType="INTEGER" />
+    <result column="payment_type" property="paymentType" jdbcType="INTEGER" />
+    <result column="assessment_reason" property="assessmentReason" jdbcType="INTEGER" />
+    <result column="level_daily_living" property="levelDailyLiving" jdbcType="INTEGER" />
+    <result column="level_mentality" property="levelMentality" jdbcType="INTEGER" />
+    <result column="level_perception" property="levelPerception" jdbcType="INTEGER" />
+    <result column="level_social_partipation" property="levelSocialPartipation" jdbcType="INTEGER" />
+    <result column="primary_level" property="primaryLevel" jdbcType="INTEGER" />
+    <result column="final_level" property="finalLevel" jdbcType="INTEGER" />
+    <result column="createtime" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="updatetime" property="updatetime" jdbcType="TIMESTAMP" />
+    <result column="createuser" property="createuser" jdbcType="VARCHAR" />
+    <result column="updateuser" property="updateuser" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, evaluate_no, name, id_cart, gender, birthday, nation, belief, marital_status, 
+    social_security_card, culture__degree, living_address, living_condition, economic_source, 
+    payment_type, assessment_reason, level_daily_living, level_mentality, level_perception, 
+    level_social_partipation, primary_level, final_level, createtime, updatetime, createuser, 
+    updateuser
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.xh.pojo.TbOldmanMessageExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tb_oldman_message
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_oldman_message
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tb_oldman_message
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xh.pojo.TbOldmanMessageExample" >
+    delete from tb_oldman_message
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  
+  
+  <insert id="insert" parameterType="com.xh.pojo.TbOldmanMessage" >
+  	<selectKey keyProperty="id" resultType="java.lang.Integer" order="AFTER">
+  		select LAST_INSERT_ID()
+  	</selectKey>
+    insert into tb_oldman_message (id, evaluate_no, name, 
+      id_cart, gender, birthday, 
+      nation, belief, marital_status, 
+      social_security_card, culture__degree, living_address, 
+      living_condition, economic_source, payment_type, 
+      assessment_reason, level_daily_living, level_mentality, 
+      level_perception, level_social_partipation, 
+      primary_level, final_level, createtime, 
+      updatetime, createuser, updateuser
+      )
+    values (#{id,jdbcType=INTEGER}, #{evaluateNo,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{idCart,jdbcType=VARCHAR}, #{gender,jdbcType=CHAR}, #{birthday,jdbcType=DATE}, 
+      #{nation,jdbcType=VARCHAR}, #{belief,jdbcType=INTEGER}, #{maritalStatus,jdbcType=INTEGER}, 
+      #{socialSecurityCard,jdbcType=VARCHAR}, #{cultureDegree,jdbcType=INTEGER}, #{livingAddress,jdbcType=VARCHAR}, 
+      #{livingCondition,jdbcType=INTEGER}, #{economicSource,jdbcType=INTEGER}, #{paymentType,jdbcType=INTEGER}, 
+      #{assessmentReason,jdbcType=INTEGER}, #{levelDailyLiving,jdbcType=INTEGER}, #{levelMentality,jdbcType=INTEGER}, 
+      #{levelPerception,jdbcType=INTEGER}, #{levelSocialPartipation,jdbcType=INTEGER}, 
+      #{primaryLevel,jdbcType=INTEGER}, #{finalLevel,jdbcType=INTEGER}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{updatetime,jdbcType=TIMESTAMP}, #{createuser,jdbcType=VARCHAR}, #{updateuser,jdbcType=VARCHAR}
+      )
+  </insert>
+  
+  
+  
+  <insert id="insertSelective" parameterType="com.xh.pojo.TbOldmanMessage" >
+    insert into tb_oldman_message
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="evaluateNo != null" >
+        evaluate_no,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="idCart != null" >
+        id_cart,
+      </if>
+      <if test="gender != null" >
+        gender,
+      </if>
+      <if test="birthday != null" >
+        birthday,
+      </if>
+      <if test="nation != null" >
+        nation,
+      </if>
+      <if test="belief != null" >
+        belief,
+      </if>
+      <if test="maritalStatus != null" >
+        marital_status,
+      </if>
+      <if test="socialSecurityCard != null" >
+        social_security_card,
+      </if>
+      <if test="cultureDegree != null" >
+        culture__degree,
+      </if>
+      <if test="livingAddress != null" >
+        living_address,
+      </if>
+      <if test="livingCondition != null" >
+        living_condition,
+      </if>
+      <if test="economicSource != null" >
+        economic_source,
+      </if>
+      <if test="paymentType != null" >
+        payment_type,
+      </if>
+      <if test="assessmentReason != null" >
+        assessment_reason,
+      </if>
+      <if test="levelDailyLiving != null" >
+        level_daily_living,
+      </if>
+      <if test="levelMentality != null" >
+        level_mentality,
+      </if>
+      <if test="levelPerception != null" >
+        level_perception,
+      </if>
+      <if test="levelSocialPartipation != null" >
+        level_social_partipation,
+      </if>
+      <if test="primaryLevel != null" >
+        primary_level,
+      </if>
+      <if test="finalLevel != null" >
+        final_level,
+      </if>
+      <if test="createtime != null" >
+        createtime,
+      </if>
+      <if test="updatetime != null" >
+        updatetime,
+      </if>
+      <if test="createuser != null" >
+        createuser,
+      </if>
+      <if test="updateuser != null" >
+        updateuser,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="evaluateNo != null" >
+        #{evaluateNo,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="idCart != null" >
+        #{idCart,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        #{gender,jdbcType=CHAR},
+      </if>
+      <if test="birthday != null" >
+        #{birthday,jdbcType=DATE},
+      </if>
+      <if test="nation != null" >
+        #{nation,jdbcType=VARCHAR},
+      </if>
+      <if test="belief != null" >
+        #{belief,jdbcType=INTEGER},
+      </if>
+      <if test="maritalStatus != null" >
+        #{maritalStatus,jdbcType=INTEGER},
+      </if>
+      <if test="socialSecurityCard != null" >
+        #{socialSecurityCard,jdbcType=VARCHAR},
+      </if>
+      <if test="cultureDegree != null" >
+        #{cultureDegree,jdbcType=INTEGER},
+      </if>
+      <if test="livingAddress != null" >
+        #{livingAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="livingCondition != null" >
+        #{livingCondition,jdbcType=INTEGER},
+      </if>
+      <if test="economicSource != null" >
+        #{economicSource,jdbcType=INTEGER},
+      </if>
+      <if test="paymentType != null" >
+        #{paymentType,jdbcType=INTEGER},
+      </if>
+      <if test="assessmentReason != null" >
+        #{assessmentReason,jdbcType=INTEGER},
+      </if>
+      <if test="levelDailyLiving != null" >
+        #{levelDailyLiving,jdbcType=INTEGER},
+      </if>
+      <if test="levelMentality != null" >
+        #{levelMentality,jdbcType=INTEGER},
+      </if>
+      <if test="levelPerception != null" >
+        #{levelPerception,jdbcType=INTEGER},
+      </if>
+      <if test="levelSocialPartipation != null" >
+        #{levelSocialPartipation,jdbcType=INTEGER},
+      </if>
+      <if test="primaryLevel != null" >
+        #{primaryLevel,jdbcType=INTEGER},
+      </if>
+      <if test="finalLevel != null" >
+        #{finalLevel,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createuser != null" >
+        #{createuser,jdbcType=VARCHAR},
+      </if>
+      <if test="updateuser != null" >
+        #{updateuser,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xh.pojo.TbOldmanMessageExample" resultType="java.lang.Integer" >
+    select count(*) from tb_oldman_message
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update tb_oldman_message
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.evaluateNo != null" >
+        evaluate_no = #{record.evaluateNo,jdbcType=VARCHAR},
+      </if>
+      <if test="record.name != null" >
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.idCart != null" >
+        id_cart = #{record.idCart,jdbcType=VARCHAR},
+      </if>
+      <if test="record.gender != null" >
+        gender = #{record.gender,jdbcType=CHAR},
+      </if>
+      <if test="record.birthday != null" >
+        birthday = #{record.birthday,jdbcType=DATE},
+      </if>
+      <if test="record.nation != null" >
+        nation = #{record.nation,jdbcType=VARCHAR},
+      </if>
+      <if test="record.belief != null" >
+        belief = #{record.belief,jdbcType=INTEGER},
+      </if>
+      <if test="record.maritalStatus != null" >
+        marital_status = #{record.maritalStatus,jdbcType=INTEGER},
+      </if>
+      <if test="record.socialSecurityCard != null" >
+        social_security_card = #{record.socialSecurityCard,jdbcType=VARCHAR},
+      </if>
+      <if test="record.cultureDegree != null" >
+        culture__degree = #{record.cultureDegree,jdbcType=INTEGER},
+      </if>
+      <if test="record.livingAddress != null" >
+        living_address = #{record.livingAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.livingCondition != null" >
+        living_condition = #{record.livingCondition,jdbcType=INTEGER},
+      </if>
+      <if test="record.economicSource != null" >
+        economic_source = #{record.economicSource,jdbcType=INTEGER},
+      </if>
+      <if test="record.paymentType != null" >
+        payment_type = #{record.paymentType,jdbcType=INTEGER},
+      </if>
+      <if test="record.assessmentReason != null" >
+        assessment_reason = #{record.assessmentReason,jdbcType=INTEGER},
+      </if>
+      <if test="record.levelDailyLiving != null" >
+        level_daily_living = #{record.levelDailyLiving,jdbcType=INTEGER},
+      </if>
+      <if test="record.levelMentality != null" >
+        level_mentality = #{record.levelMentality,jdbcType=INTEGER},
+      </if>
+      <if test="record.levelPerception != null" >
+        level_perception = #{record.levelPerception,jdbcType=INTEGER},
+      </if>
+      <if test="record.levelSocialPartipation != null" >
+        level_social_partipation = #{record.levelSocialPartipation,jdbcType=INTEGER},
+      </if>
+      <if test="record.primaryLevel != null" >
+        primary_level = #{record.primaryLevel,jdbcType=INTEGER},
+      </if>
+      <if test="record.finalLevel != null" >
+        final_level = #{record.finalLevel,jdbcType=INTEGER},
+      </if>
+      <if test="record.createtime != null" >
+        createtime = #{record.createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updatetime != null" >
+        updatetime = #{record.updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createuser != null" >
+        createuser = #{record.createuser,jdbcType=VARCHAR},
+      </if>
+      <if test="record.updateuser != null" >
+        updateuser = #{record.updateuser,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update tb_oldman_message
+    set id = #{record.id,jdbcType=INTEGER},
+      evaluate_no = #{record.evaluateNo,jdbcType=VARCHAR},
+      name = #{record.name,jdbcType=VARCHAR},
+      id_cart = #{record.idCart,jdbcType=VARCHAR},
+      gender = #{record.gender,jdbcType=CHAR},
+      birthday = #{record.birthday,jdbcType=DATE},
+      nation = #{record.nation,jdbcType=VARCHAR},
+      belief = #{record.belief,jdbcType=INTEGER},
+      marital_status = #{record.maritalStatus,jdbcType=INTEGER},
+      social_security_card = #{record.socialSecurityCard,jdbcType=VARCHAR},
+      culture__degree = #{record.cultureDegree,jdbcType=INTEGER},
+      living_address = #{record.livingAddress,jdbcType=VARCHAR},
+      living_condition = #{record.livingCondition,jdbcType=INTEGER},
+      economic_source = #{record.economicSource,jdbcType=INTEGER},
+      payment_type = #{record.paymentType,jdbcType=INTEGER},
+      assessment_reason = #{record.assessmentReason,jdbcType=INTEGER},
+      level_daily_living = #{record.levelDailyLiving,jdbcType=INTEGER},
+      level_mentality = #{record.levelMentality,jdbcType=INTEGER},
+      level_perception = #{record.levelPerception,jdbcType=INTEGER},
+      level_social_partipation = #{record.levelSocialPartipation,jdbcType=INTEGER},
+      primary_level = #{record.primaryLevel,jdbcType=INTEGER},
+      final_level = #{record.finalLevel,jdbcType=INTEGER},
+      createtime = #{record.createtime,jdbcType=TIMESTAMP},
+      updatetime = #{record.updatetime,jdbcType=TIMESTAMP},
+      createuser = #{record.createuser,jdbcType=VARCHAR},
+      updateuser = #{record.updateuser,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xh.pojo.TbOldmanMessage" >
+    update tb_oldman_message
+    <set >
+      <if test="evaluateNo != null" >
+        evaluate_no = #{evaluateNo,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="idCart != null" >
+        id_cart = #{idCart,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null" >
+        gender = #{gender,jdbcType=CHAR},
+      </if>
+      <if test="birthday != null" >
+        birthday = #{birthday,jdbcType=DATE},
+      </if>
+      <if test="nation != null" >
+        nation = #{nation,jdbcType=VARCHAR},
+      </if>
+      <if test="belief != null" >
+        belief = #{belief,jdbcType=INTEGER},
+      </if>
+      <if test="maritalStatus != null" >
+        marital_status = #{maritalStatus,jdbcType=INTEGER},
+      </if>
+      <if test="socialSecurityCard != null" >
+        social_security_card = #{socialSecurityCard,jdbcType=VARCHAR},
+      </if>
+      <if test="cultureDegree != null" >
+        culture__degree = #{cultureDegree,jdbcType=INTEGER},
+      </if>
+      <if test="livingAddress != null" >
+        living_address = #{livingAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="livingCondition != null" >
+        living_condition = #{livingCondition,jdbcType=INTEGER},
+      </if>
+      <if test="economicSource != null" >
+        economic_source = #{economicSource,jdbcType=INTEGER},
+      </if>
+      <if test="paymentType != null" >
+        payment_type = #{paymentType,jdbcType=INTEGER},
+      </if>
+      <if test="assessmentReason != null" >
+        assessment_reason = #{assessmentReason,jdbcType=INTEGER},
+      </if>
+      <if test="levelDailyLiving != null" >
+        level_daily_living = #{levelDailyLiving,jdbcType=INTEGER},
+      </if>
+      <if test="levelMentality != null" >
+        level_mentality = #{levelMentality,jdbcType=INTEGER},
+      </if>
+      <if test="levelPerception != null" >
+        level_perception = #{levelPerception,jdbcType=INTEGER},
+      </if>
+      <if test="levelSocialPartipation != null" >
+        level_social_partipation = #{levelSocialPartipation,jdbcType=INTEGER},
+      </if>
+      <if test="primaryLevel != null" >
+        primary_level = #{primaryLevel,jdbcType=INTEGER},
+      </if>
+      <if test="finalLevel != null" >
+        final_level = #{finalLevel,jdbcType=INTEGER},
+      </if>
+      <if test="createtime != null" >
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatetime != null" >
+        updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createuser != null" >
+        createuser = #{createuser,jdbcType=VARCHAR},
+      </if>
+      <if test="updateuser != null" >
+        updateuser = #{updateuser,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xh.pojo.TbOldmanMessage" >
+    update tb_oldman_message
+    set evaluate_no = #{evaluateNo,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      id_cart = #{idCart,jdbcType=VARCHAR},
+      gender = #{gender,jdbcType=CHAR},
+      birthday = #{birthday,jdbcType=DATE},
+      nation = #{nation,jdbcType=VARCHAR},
+      belief = #{belief,jdbcType=INTEGER},
+      marital_status = #{maritalStatus,jdbcType=INTEGER},
+      social_security_card = #{socialSecurityCard,jdbcType=VARCHAR},
+      culture__degree = #{cultureDegree,jdbcType=INTEGER},
+      living_address = #{livingAddress,jdbcType=VARCHAR},
+      living_condition = #{livingCondition,jdbcType=INTEGER},
+      economic_source = #{economicSource,jdbcType=INTEGER},
+      payment_type = #{paymentType,jdbcType=INTEGER},
+      assessment_reason = #{assessmentReason,jdbcType=INTEGER},
+      level_daily_living = #{levelDailyLiving,jdbcType=INTEGER},
+      level_mentality = #{levelMentality,jdbcType=INTEGER},
+      level_perception = #{levelPerception,jdbcType=INTEGER},
+      level_social_partipation = #{levelSocialPartipation,jdbcType=INTEGER},
+      primary_level = #{primaryLevel,jdbcType=INTEGER},
+      final_level = #{finalLevel,jdbcType=INTEGER},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      updatetime = #{updatetime,jdbcType=TIMESTAMP},
+      createuser = #{createuser,jdbcType=VARCHAR},
+      updateuser = #{updateuser,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  
+  
+  
+  
+  <select id="countGender" resultType="map">
+  	SELECT gender, COUNT(*) gendercount FROM tb_oldman_message GROUP BY gender;
+  </select>
+  
+  <select id="countAbility" resultType="map">
+  	SELECT primary_level , COUNT(*) ability FROM tb_oldman_message GROUP BY primary_level ;
+  </select>
+  
+  <select id="countLivingCondition" resultType="map">
+  	SELECT living_condition , COUNT(*) living FROM tb_oldman_message GROUP BY living_condition ;
+  </select>
+  
+  <select  id="countAge" resultType="int">
+	  	SELECT 
+	  		COUNT(*) 
+	  	FROM 
+	  		tb_oldman_message 
+	  	<where>
+	  		<if test="start != null">
+		  		AND birthday >= #{start} 
+	  		</if>
+	  		<if test="end != null">
+	  			<![CDATA[
+		  			AND birthday < #{end};
+	  			]]>
+	  		</if>
+	  	</where>
+  </select>
+  
+  
+  
+  <select id="countArea" resultType="map">
+  	SELECT LEFT(living_address,3) area, COUNT(*) areacount FROM tb_oldman_message GROUP BY LEFT(living_address,3);
+  </select>
+  
+  
+  
+    <!-- 日常生活能力统计 -->
+  <select id="countLivingEat" resultType="map">
+  	SELECT 
+		primary_level , living_eat , COUNT(*) eatcount
+	FROM 
+		tb_oldman_livingmessage living , tb_oldman_message msg 
+	WHERE 
+		living.id = msg.id AND primary_level IS NOT NULL  AND living_eat IS NOT NULL
+	GROUP BY 
+		primary_level , living_eat;
+  </select>
+  
+  
+  <select id="countLivingStool" resultType="map">
+  	SELECT 
+		primary_level , living_stool_control , COUNT(*) stoolcount
+	FROM 
+		tb_oldman_livingmessage living , tb_oldman_message msg 
+	WHERE 
+		living.id = msg.id AND primary_level IS NOT NULL  AND living_stool_control IS NOT NULL
+	GROUP BY 
+		primary_level , living_stool_control;
+  </select>
+  
+  
+  <select id="countLivingUrination" resultType="map">
+    SELECT 
+		primary_level , living_urination_control , COUNT(*) urinationcount
+	FROM 
+		tb_oldman_livingmessage living , tb_oldman_message msg 
+	WHERE 
+		living.id = msg.id AND primary_level IS NOT NULL  AND living_urination_control IS NOT NULL
+	GROUP BY 
+		primary_level , living_urination_control;
+  </select>
+  
+  
+  
+  <select id="countLivingWalk" resultType="map">
+     SELECT 
+		primary_level , living_walk , COUNT(*) walkcount
+	FROM 
+		tb_oldman_livingmessage living , tb_oldman_message msg 
+	WHERE 
+		living.id = msg.id AND primary_level IS NOT NULL  AND living_walk IS NOT NULL
+	GROUP BY 
+		primary_level , living_walk;
+  </select>
+  
+  
+  
+  
+    <!-- 感知觉与沟通统计 -->
+  <select id="countPerceptionConsciousness" resultType="map">
+  	SELECT 
+		primary_level , consciousness_level , COUNT(*) consciousnesscount
+	FROM 
+		tb_oldman_perception p, tb_oldman_message m
+	WHERE 
+		p.`id` = m.`id` AND primary_level IS NOT NULL  AND consciousness_level IS NOT NULL
+	GROUP BY 
+		primary_level , consciousness_level;
+  </select>
+  
+  
+  
+  
+  <select id="countPerceptionVision" resultType="map">
+  	SELECT 
+		primary_level , vision_level , COUNT(*) visioncount
+	FROM 
+		tb_oldman_perception p, tb_oldman_message m
+	WHERE 
+		p.`id` = m.`id` AND primary_level IS NOT NULL  AND vision_level IS NOT NULL
+	GROUP BY 
+		primary_level , vision_level;
+  </select>
+  
+  
+  
+  
+  <select id="countPerceptionHearing" resultType="map">
+  	SELECT 
+		primary_level , hearing_level , COUNT(*) hearingcount
+	FROM 
+		tb_oldman_perception p, tb_oldman_message m
+	WHERE 
+		p.`id` = m.`id` AND primary_level IS NOT NULL  AND hearing_level IS NOT NULL
+	GROUP BY 
+		primary_level , hearing_level;
+  </select>
+  
+  
+  
+  
+  
+  <select id="countPerceptionCommunication" resultType="map">
+  	SELECT 
+		primary_level , communication_level , COUNT(*) communicationcount
+	FROM 
+		tb_oldman_perception p, tb_oldman_message m
+	WHERE 
+		p.`id` = m.`id` AND primary_level IS NOT NULL  AND communication_level IS NOT NULL
+	GROUP BY 
+		primary_level , communication_level;
+  </select>
+  
+  
+  
+  
+  <!-- 社会参与统计 -->
+  <select id="countSocialLiving" resultType="map">
+  	SELECT 
+		primary_level , living_ability , COUNT(*) livingcount
+	FROM 
+		tb_oldman_social_participation s, tb_oldman_message m
+	WHERE 
+		s.`id`=m.`id` AND primary_level IS NOT NULL  AND living_ability IS NOT NULL
+	GROUP BY 
+		primary_level , living_ability;
+  </select>
+  
+  
+  <select id="countSocialTimeSpace" resultType="map">
+  	SELECT 
+		primary_level , time_space_orientation , COUNT(*) timecount
+	FROM 
+		tb_oldman_social_participation s, tb_oldman_message m
+	WHERE 
+		s.`id`=m.`id` AND primary_level IS NOT NULL  AND time_space_orientation IS NOT NULL
+	GROUP BY 
+		primary_level , time_space_orientation;
+  </select>
+  
+  
+  <select id="countSocialPerson" resultType="map">
+  	SELECT 
+		primary_level , personage_orientation , COUNT(*) personcount
+	FROM 
+		tb_oldman_social_participation s, tb_oldman_message m
+	WHERE 
+		s.`id`=m.`id` AND primary_level IS NOT NULL  AND personage_orientation IS NOT NULL
+	GROUP BY 
+		primary_level , personage_orientation;
+  </select>
+  
+  
+  <select id="countSocialJob" resultType="map">
+  	SELECT 
+		primary_level , job_ability , COUNT(*) jobcount
+	FROM 
+		tb_oldman_social_participation s, tb_oldman_message m
+	WHERE 
+		s.`id`=m.`id` AND primary_level IS NOT NULL  AND job_ability IS NOT NULL
+	GROUP BY 
+		primary_level , job_ability;
+  </select>
+  
+  
+  <select id="countSocialCommunication" resultType="map">
+  	SELECT 
+		primary_level , communication_ability , COUNT(*) communicationcount
+	FROM 
+		tb_oldman_social_participation s, tb_oldman_message m
+	WHERE 
+		s.`id`=m.`id` AND primary_level IS NOT NULL  AND communication_ability IS NOT NULL
+	GROUP BY 
+		primary_level , communication_ability;
+  </select>
+  
+  
+  
+</mapper>

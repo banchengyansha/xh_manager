@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xh.mapper.TbOldmanLinkmessageMapper" >
+  <resultMap id="BaseResultMap" type="com.xh.pojo.TbOldmanLinkmessage" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="provider_name" property="providerName" jdbcType="VARCHAR" />
+    <result column="provider_relation" property="providerRelation" jdbcType="INTEGER" />
+    <result column="linkman1_name" property="linkman1Name" jdbcType="VARCHAR" />
+    <result column="linkman1_phone" property="linkman1Phone" jdbcType="VARCHAR" />
+    <result column="linkman2_name" property="linkman2Name" jdbcType="VARCHAR" />
+    <result column="linkman2_phone" property="linkman2Phone" jdbcType="VARCHAR" />
+    <result column="linkman3_name" property="linkman3Name" jdbcType="VARCHAR" />
+    <result column="linkman3_phone" property="linkman3Phone" jdbcType="VARCHAR" />
+    <result column="evaluate_name" property="evaluateName" jdbcType="VARCHAR" />
+    <result column="evaluate_phone" property="evaluatePhone" jdbcType="VARCHAR" />
+    <result column="evaluate_group" property="evaluateGroup" jdbcType="VARCHAR" />
+    <result column="evaluate_address" property="evaluateAddress" jdbcType="VARCHAR" />
+    <result column="evaluate_email" property="evaluateEmail" jdbcType="VARCHAR" />
+    <result column="evaluate_createtime" property="evaluateCreatetime" jdbcType="TIMESTAMP" />
+    <result column="evaluate_updatetime" property="evaluateUpdatetime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, provider_name, provider_relation, linkman1_name, linkman1_phone, linkman2_name, 
+    linkman2_phone, linkman3_name, linkman3_phone, evaluate_name, evaluate_phone, evaluate_group, 
+    evaluate_address, evaluate_email, evaluate_createtime, evaluate_updatetime
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.xh.pojo.TbOldmanLinkmessageExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tb_oldman_linkmessage
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_oldman_linkmessage
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tb_oldman_linkmessage
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xh.pojo.TbOldmanLinkmessageExample" >
+    delete from tb_oldman_linkmessage
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  
+  
+  
+  <insert id="insert" parameterType="com.xh.pojo.TbOldmanLinkmessage" >
+    insert into tb_oldman_linkmessage (id, provider_name, provider_relation, 
+      linkman1_name, linkman1_phone, linkman2_name, 
+      linkman2_phone, linkman3_name, linkman3_phone, 
+      evaluate_name, evaluate_phone, evaluate_group, 
+      evaluate_address, evaluate_email, evaluate_createtime, 
+      evaluate_updatetime)
+    values (#{id,jdbcType=INTEGER}, #{providerName,jdbcType=VARCHAR}, #{providerRelation,jdbcType=INTEGER}, 
+      #{linkman1Name,jdbcType=VARCHAR}, #{linkman1Phone,jdbcType=VARCHAR}, #{linkman2Name,jdbcType=VARCHAR}, 
+      #{linkman2Phone,jdbcType=VARCHAR}, #{linkman3Name,jdbcType=VARCHAR}, #{linkman3Phone,jdbcType=VARCHAR}, 
+      #{evaluateName,jdbcType=VARCHAR}, #{evaluatePhone,jdbcType=VARCHAR}, #{evaluateGroup,jdbcType=VARCHAR}, 
+      #{evaluateAddress,jdbcType=VARCHAR}, #{evaluateEmail,jdbcType=VARCHAR}, #{evaluateCreatetime,jdbcType=TIMESTAMP}, 
+      #{evaluateUpdatetime,jdbcType=TIMESTAMP})
+  </insert>
+  
+  
+  
+  
+  <insert id="insertSelective" parameterType="com.xh.pojo.TbOldmanLinkmessage" >
+    insert into tb_oldman_linkmessage
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="providerName != null" >
+        provider_name,
+      </if>
+      <if test="providerRelation != null" >
+        provider_relation,
+      </if>
+      <if test="linkman1Name != null" >
+        linkman1_name,
+      </if>
+      <if test="linkman1Phone != null" >
+        linkman1_phone,
+      </if>
+      <if test="linkman2Name != null" >
+        linkman2_name,
+      </if>
+      <if test="linkman2Phone != null" >
+        linkman2_phone,
+      </if>
+      <if test="linkman3Name != null" >
+        linkman3_name,
+      </if>
+      <if test="linkman3Phone != null" >
+        linkman3_phone,
+      </if>
+      <if test="evaluateName != null" >
+        evaluate_name,
+      </if>
+      <if test="evaluatePhone != null" >
+        evaluate_phone,
+      </if>
+      <if test="evaluateGroup != null" >
+        evaluate_group,
+      </if>
+      <if test="evaluateAddress != null" >
+        evaluate_address,
+      </if>
+      <if test="evaluateEmail != null" >
+        evaluate_email,
+      </if>
+      <if test="evaluateCreatetime != null" >
+        evaluate_createtime,
+      </if>
+      <if test="evaluateUpdatetime != null" >
+        evaluate_updatetime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="providerName != null" >
+        #{providerName,jdbcType=VARCHAR},
+      </if>
+      <if test="providerRelation != null" >
+        #{providerRelation,jdbcType=INTEGER},
+      </if>
+      <if test="linkman1Name != null" >
+        #{linkman1Name,jdbcType=VARCHAR},
+      </if>
+      <if test="linkman1Phone != null" >
+        #{linkman1Phone,jdbcType=VARCHAR},
+      </if>
+      <if test="linkman2Name != null" >
+        #{linkman2Name,jdbcType=VARCHAR},
+      </if>
+      <if test="linkman2Phone != null" >
+        #{linkman2Phone,jdbcType=VARCHAR},
+      </if>
+      <if test="linkman3Name != null" >
+        #{linkman3Name,jdbcType=VARCHAR},
+      </if>
+      <if test="linkman3Phone != null" >
+        #{linkman3Phone,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluateName != null" >
+        #{evaluateName,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluatePhone != null" >
+        #{evaluatePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluateGroup != null" >
+        #{evaluateGroup,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluateAddress != null" >
+        #{evaluateAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluateEmail != null" >
+        #{evaluateEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluateCreatetime != null" >
+        #{evaluateCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="evaluateUpdatetime != null" >
+        #{evaluateUpdatetime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xh.pojo.TbOldmanLinkmessageExample" resultType="java.lang.Integer" >
+    select count(*) from tb_oldman_linkmessage
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update tb_oldman_linkmessage
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.providerName != null" >
+        provider_name = #{record.providerName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.providerRelation != null" >
+        provider_relation = #{record.providerRelation,jdbcType=INTEGER},
+      </if>
+      <if test="record.linkman1Name != null" >
+        linkman1_name = #{record.linkman1Name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.linkman1Phone != null" >
+        linkman1_phone = #{record.linkman1Phone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.linkman2Name != null" >
+        linkman2_name = #{record.linkman2Name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.linkman2Phone != null" >
+        linkman2_phone = #{record.linkman2Phone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.linkman3Name != null" >
+        linkman3_name = #{record.linkman3Name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.linkman3Phone != null" >
+        linkman3_phone = #{record.linkman3Phone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.evaluateName != null" >
+        evaluate_name = #{record.evaluateName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.evaluatePhone != null" >
+        evaluate_phone = #{record.evaluatePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.evaluateGroup != null" >
+        evaluate_group = #{record.evaluateGroup,jdbcType=VARCHAR},
+      </if>
+      <if test="record.evaluateAddress != null" >
+        evaluate_address = #{record.evaluateAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.evaluateEmail != null" >
+        evaluate_email = #{record.evaluateEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.evaluateCreatetime != null" >
+        evaluate_createtime = #{record.evaluateCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.evaluateUpdatetime != null" >
+        evaluate_updatetime = #{record.evaluateUpdatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update tb_oldman_linkmessage
+    set id = #{record.id,jdbcType=INTEGER},
+      provider_name = #{record.providerName,jdbcType=VARCHAR},
+      provider_relation = #{record.providerRelation,jdbcType=INTEGER},
+      linkman1_name = #{record.linkman1Name,jdbcType=VARCHAR},
+      linkman1_phone = #{record.linkman1Phone,jdbcType=VARCHAR},
+      linkman2_name = #{record.linkman2Name,jdbcType=VARCHAR},
+      linkman2_phone = #{record.linkman2Phone,jdbcType=VARCHAR},
+      linkman3_name = #{record.linkman3Name,jdbcType=VARCHAR},
+      linkman3_phone = #{record.linkman3Phone,jdbcType=VARCHAR},
+      evaluate_name = #{record.evaluateName,jdbcType=VARCHAR},
+      evaluate_phone = #{record.evaluatePhone,jdbcType=VARCHAR},
+      evaluate_group = #{record.evaluateGroup,jdbcType=VARCHAR},
+      evaluate_address = #{record.evaluateAddress,jdbcType=VARCHAR},
+      evaluate_email = #{record.evaluateEmail,jdbcType=VARCHAR},
+      evaluate_createtime = #{record.evaluateCreatetime,jdbcType=TIMESTAMP},
+      evaluate_updatetime = #{record.evaluateUpdatetime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xh.pojo.TbOldmanLinkmessage" >
+    update tb_oldman_linkmessage
+    <set >
+      <if test="providerName != null" >
+        provider_name = #{providerName,jdbcType=VARCHAR},
+      </if>
+      <if test="providerRelation != null" >
+        provider_relation = #{providerRelation,jdbcType=INTEGER},
+      </if>
+      <if test="linkman1Name != null" >
+        linkman1_name = #{linkman1Name,jdbcType=VARCHAR},
+      </if>
+      <if test="linkman1Phone != null" >
+        linkman1_phone = #{linkman1Phone,jdbcType=VARCHAR},
+      </if>
+      <if test="linkman2Name != null" >
+        linkman2_name = #{linkman2Name,jdbcType=VARCHAR},
+      </if>
+      <if test="linkman2Phone != null" >
+        linkman2_phone = #{linkman2Phone,jdbcType=VARCHAR},
+      </if>
+      <if test="linkman3Name != null" >
+        linkman3_name = #{linkman3Name,jdbcType=VARCHAR},
+      </if>
+      <if test="linkman3Phone != null" >
+        linkman3_phone = #{linkman3Phone,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluateName != null" >
+        evaluate_name = #{evaluateName,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluatePhone != null" >
+        evaluate_phone = #{evaluatePhone,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluateGroup != null" >
+        evaluate_group = #{evaluateGroup,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluateAddress != null" >
+        evaluate_address = #{evaluateAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluateEmail != null" >
+        evaluate_email = #{evaluateEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="evaluateCreatetime != null" >
+        evaluate_createtime = #{evaluateCreatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="evaluateUpdatetime != null" >
+        evaluate_updatetime = #{evaluateUpdatetime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xh.pojo.TbOldmanLinkmessage" >
+    update tb_oldman_linkmessage
+    set provider_name = #{providerName,jdbcType=VARCHAR},
+      provider_relation = #{providerRelation,jdbcType=INTEGER},
+      linkman1_name = #{linkman1Name,jdbcType=VARCHAR},
+      linkman1_phone = #{linkman1Phone,jdbcType=VARCHAR},
+      linkman2_name = #{linkman2Name,jdbcType=VARCHAR},
+      linkman2_phone = #{linkman2Phone,jdbcType=VARCHAR},
+      linkman3_name = #{linkman3Name,jdbcType=VARCHAR},
+      linkman3_phone = #{linkman3Phone,jdbcType=VARCHAR},
+      evaluate_name = #{evaluateName,jdbcType=VARCHAR},
+      evaluate_phone = #{evaluatePhone,jdbcType=VARCHAR},
+      evaluate_group = #{evaluateGroup,jdbcType=VARCHAR},
+      evaluate_address = #{evaluateAddress,jdbcType=VARCHAR},
+      evaluate_email = #{evaluateEmail,jdbcType=VARCHAR},
+      evaluate_createtime = #{evaluateCreatetime,jdbcType=TIMESTAMP},
+      evaluate_updatetime = #{evaluateUpdatetime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- 页面meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>档案管理</title>
+    <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
+    <link rel="stylesheet" href="../plugins/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../plugins/adminLTE/css/AdminLTE.css">
+    <link rel="stylesheet" href="../plugins/adminLTE/css/skins/_all-skins.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+	<script src="../plugins/jQuery/jquery-2.2.3.min.js"></script>
+    <script src="../plugins/bootstrap/js/bootstrap.min.js"></script>
+ 	
+ 	<!-- 引入angular的js -->
+    <script type="text/javascript" src="../plugins/angularjs/angular.min.js"></script>
+    <script type="text/javascript" src="../plugins/angularjs/pagination.js"></script>
+    <link rel="stylesheet" href="../plugins/angularjs/pagination.css">
+    
+    <script type="text/javascript" src="../js/base_pagination.js"></script>
+    <script type="text/javascript" src="../js/controller/baseController.js"></script>
+    
+    <script type="text/javascript" src="../js/service/baseCodeService.js"></script>
+    <script type="text/javascript" src="../js/service/oldmanMessageService.js"></script>
+    <script type="text/javascript" src="../js/service/abilityItemService.js"></script>
+    <script type="text/javascript" src="../js/controller/baseController.js"></script>
+    <script type="text/javascript" src="../js/controller/oldmanMessageController.js"></script>
+ 	
+ 	
+</head>
+
+<body class="hold-transition skin-red sidebar-mini" ng-app="xhManager" ng-controller="oldmanMessageController" ng-init="findAllBaseCode();findAllOption();">
+  <!-- .box-body -->
+       
+          <div class="box-header with-border">
+              <h3 class="box-title">档案管理</h3>
+          </div>
+
+          <div class="box-body">
+
+              <!-- 数据表格 -->
+              <div class="table-box">
+
+                  <!--工具栏-->
+                  <div class="pull-left">
+                      <div class="form-group form-inline">
+                          <div class="btn-group">
+                              <a type="button" class="btn btn-default" title="新建" href="archive.html"><i class="fa fa-file-o"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></i>&nbsp;新建</a>
+                              <button type="button" class="btn btn-default" title="删除" ng-click="dele()"><i class="fa fa-trash-o"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></i>&nbsp;删除</button>
+                              <button type="button" class="btn btn-default" title="导出列表" ng-click="exportData()"><i class="fa fa-refresh"><span class="glyphicon glyphicon-save" aria-hidden="true"></span></i>&nbsp;导出列表</button>
+                              <button type="button" class="btn btn-default" title="导出模板" ng-click="exportTemplate()"><i class="fa fa-refresh"><span class="glyphicon glyphicon-save" aria-hidden="true"></span></i>&nbsp;导出模板</button>
+                              <button type="button" class="btn btn-default" title="刷新" onclick="window.location.reload();"><i class="fa fa-refresh"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></i>&nbsp;刷新</button>
+                          </div>
+                      </div>
+                  </div>
+                  
+                  <div class="box-tools pull-right">
+                      <div class="has-feedback form-inline">
+			      		<label for="name">姓名</label> 
+			      		<input type="text" size="8" class="form-control" ng-model="searchEntity.name">
+			      
+			      		<label for="idCart">身份证</label> 
+			      		<input type="text" size="8" class="form-control"  ng-model="searchEntity.idCart">	
+			      		
+			      		<label for="livingAddress">区</label> 
+			      		<select type="text" class="form-control"  ng-model="searchEntity.livingAddress">	
+			      			<option value="新城区">新城区</option>
+			      			<option value="莲湖区">莲湖区</option>
+			      			<option value="碑林区">碑林区</option>
+     					</select>	
+     					
+     							
+						<button class="btn btn-default" ng-click="reloadList()"><span class="glyphicon glyphicon-search" aria-hidden="true"></span>&nbsp;&nbsp;查询</button>
+						<button class="btn btn-default" ng-click="searchEntity={};reloadList()"><span class="glyphicon glyphicon-repeat" aria-hidden="true"></span>&nbsp;&nbsp;清空</button>                                      
+                      </div>
+                  </div>
+                  <!--工具栏/-->
+                   
+
+            <!--数据列表-->
+            <table id="dataList" class="table table-bordered table-striped table-hover dataTable">
+                <thead>
+                    <tr>
+                        <th class="" style="padding-right:0px">
+                            <input id="selall" type="checkbox" class="icheckbox_square-blue">
+                        </th> 
+					    <th class="sorting_asc">档案编号</th>
+				        <th class="sorting">姓名</th>
+				        <th class="sorting">性别</th>
+				        <th class="sorting">出生年月</th>
+				        <th class="sorting">身份证号</th>
+				        <th class="sorting">民族</th>
+				        <th class="sorting">居住地址</th>									     						
+				        <th class="sorting">能力等级</th>									     						
+                        <th class="text-center">操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                   <tr ng-repeat="entity in list">
+                      <td><input  type="checkbox" ng-click="updateSelection($event , entity.id)"></td>			                              
+                      <td>{{entity.evaluateNo}}</td>
+				      <td>{{entity.name}}</td>
+				      <td>{{genderView[entity.gender]}}</td>
+				      <td>{{formatDate(entity.birthday)}}</td>
+				      <td>{{entity.idCart}}</td>
+				      <td>{{entity.nation}}</td>
+				      <td width="18%">{{entity.livingAddress}}</td>
+				      <td>{{abilityLevel[entity.finalLevel]}}</td>	
+                      <td class="text-center">                                          
+                     	 <button type="button" class="btn bg-olive btn-xs" data-toggle="modal" ng-click="downloadDetailResult(entity.id)" ><i class="fa fa-refresh"><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span></i>&nbsp;下载</button>  
+                     	 <button type="button" class="btn bg-olive btn-xs" data-toggle="modal" ng-click="downloadMessageResult(entity.id)" ><i class="fa fa-refresh"><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span></i>&nbsp;结果</button>  
+                     	 <button type="button" class="btn bg-olive btn-xs" data-toggle="modal" ng-click="findOne(entity.id)" data-target="#infoMessageModal" ><i class="fa fa-refresh"><span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span></i>&nbsp;详情</button>  
+                     	 <a type="button" class="btn bg-olive btn-xs" href="archive.html#?id={{entity.id}}"><i class="fa fa-file-o"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></i>&nbsp;修改</a>
+                      </td>
+                   </tr>
+                </tbody>
+            </table>
+            
+            <!--数据列表/-->                        
+			<tm-pagination conf="paginationConf"></tm-pagination>
+
+         </div>
+       <!-- 数据表格 /-->
+               
+               
+    </div>
+    <!-- /.box-body -->
+	
+	
+	
+	
+	
+	
+	
+	
+<div class="modal fade" id="infoMessageModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg" >
+	<div class="modal-content">
+		<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+			<h4 id="myModalLabel">档案详情</h4>
+		</div>
+		
+		
+		<div class="modal-body">							
+			<ul class="nav nav-tabs">
+			  <li class="active"><a href="#base" data-toggle="tab">基本信息</a></li>
+			  <li><a href="#linkman" data-toggle="tab">联系人信息</a></li>
+			  <li><a href="#recent" data-toggle="tab">老人近况</a></li>
+			  <li><a href="#ability" data-toggle="tab">能力评估</a></li>
+			  <li><a href="#abilityLevel" data-toggle="tab">能力等级</a></li>
+			</ul>							
+			
+			<!-- 选项卡开始 -->         
+		    <div id="myTabContent" class="tab-content">
+		    	
+		    	
+			    <div class="tab-pane active in" id="base">
+			      <br>
+			      <table class="table table-bordered table-striped"  width="800px">
+			      	<tr>
+			      		<td width="15%"><b>姓名</b></td>
+			      		<td width="35%">{{entity.oldmanMessage.name}}</td>
+			      		<td width="15%"><b>身份证号</b></td>
+			      		<td width="35%">{{entity.oldmanMessage.idCart}}</td>
+			      	</tr>
+			      	<tr>
+			      		<td><b>性别</b></td>
+			      		<td>{{genderView[entity.oldmanMessage.gender]}}</td>
+			      		<td><b>出生日期</b></td>
+			      		<td>{{formatDate(entity.oldmanMessage.birthday)}}</td>
+			      	</tr>
+			      	<tr>
+			      		<td><b>民族</b></td>
+			      		<td>{{entity.oldmanMessage.nation}}</td>
+			      		<td><b>社保卡号</b></td>
+			      		<td>{{entity.oldmanMessage.socialSecurityCard}}</td>
+			      	</tr>
+			      	<tr>
+			      		<td><b>婚姻状况</b></td>
+			      		<td>{{baseCodeList[entity.oldmanMessage.maritalStatus]}}</td>
+			      		<td><b>居住地址</b></td>
+			      		<td>{{entity.oldmanMessage.livingAddress}}</td>
+			      	</tr>
+			      	<tr>
+			      		<td><b>文化程度</b></td>
+			      		<td>{{baseCodeList[entity.oldmanMessage.cultureDegree]}}</td>
+			      		<td><b>宗教信仰</b></td>
+			      		<td>{{baseCodeList[entity.oldmanMessage.belief]}}</td>
+			      	</tr>
+			      	<tr>
+			      		<td><b>居住情况</b></td>
+			      		<td>{{baseCodeList[entity.oldmanMessage.livingCondition]}}</td>
+			      		<td><b>经济来源</b></td>
+			      		<td>{{baseCodeList[entity.oldmanMessage.economicSource]}}</td>
+			      	</tr>
+			      	<tr>
+			      		<td><b>费用支付方式</b></td>
+			      		<td>{{baseCodeList[entity.oldmanMessage.paymentType]}}</td>
+			      		<td><b>评估原因</b></td>
+			      		<td>{{baseCodeList[entity.oldmanMessage.assessmentReason]}}</td>
+			      	</tr>
+			      </table>			      
+      			</div>
+      			
+      			
+      			
+			    <div class="tab-pane fade" id="linkman">
+			    	<br>
+					<table class="table table-bordered table-striped" >
+			      	<tr>
+			      		<td  width="15%"><b>信息提供者姓名</b></td>
+			      		<td  width="35%">{{entity.linkmessage.providerName}}</td>
+			      		<td  width="15%"><b>与老人关系</b></td>
+			      		<td  width="35%">{{baseCodeList[entity.linkmessage.providerRelation]}}</td>
+			      	</tr>
+			      	<tr>
+			      		<td><b>第一联系人姓名</b></td>
+			      		<td>{{entity.linkmessage.linkman1Name}}</td>
+			      		<td><b>第一联系人手机</b></td>
+			      		<td>{{entity.linkmessage.linkman1Phone}}</td>
+			      	</tr>
+			      	<tr>
+			      		<td><b>第二联系人姓名</b></td>
+			      		<td>{{entity.linkmessage.linkman2Name}}</td>
+			      		<td><b>第二联系人手机</b></td>
+			      		<td>{{entity.linkmessage.linkman2Phone}}</td>
+			      	</tr>
+			      	<tr>
+			      		<td><b>第三联系人姓名</b></td>
+			      		<td>{{entity.linkmessage.linkman3Name}}</td>
+			      		<td><b>第三联系人手机</b></td>
+			      		<td>{{entity.linkmessage.linkman3Phone}}</td>
+			      	</tr>
+			      	
+			      	<tr>
+			      		<td><b>评估人姓名</b></td>
+			      		<td>{{entity.linkmessage.evaluateName}}</td>
+			      		<td><b>机构</b></td>
+			      		<td>{{entity.linkmessage.evaluateGroup}}</td>
+			      	</tr>
+			      	<tr>
+			      		<td><b>联系电话</b></td>
+			      		<td>{{entity.linkmessage.evaluatePhone}}</td>
+			      		<td><b>居住地址</b></td>
+			      		<td>{{entity.linkmessage.evaluateAddress}}</td>
+			      	</tr>
+			      	<tr>
+			      		<td><b>电子邮箱</b></td>
+			      		<td>{{entity.linkmessage.evaluateEmail}}</td>
+			      	</tr>
+			      </table>
+			    </div>
+			    
+			    
+			    
+			    <div class="tab-pane fade" id="recent">
+					<br>
+					<table class="table table-bordered table-striped" >
+				      	<tr>
+				      		<td width="15%"><b>老年痴呆</b></td>
+				      		<td width="35%">{{abilityItemOptionList[entity.recentmessage.senileDementia]}}</td>
+				      		<td width="15%"><b>精神疾病</b></td>
+				      		<td width="35%">{{abilityItemOptionList[entity.recentmessage.mentalIllness]}}</td>
+				      	</tr>
+				      	<tr>
+				      		<td><b>跌倒</b></td>
+				      		<td>{{abilityItemOptionList[entity.recentmessage.fallRecently]}}</td>
+				      		<td><b>噎食</b></td>
+				      		<td>{{abilityItemOptionList[entity.recentmessage.chokingRecently]}}</td>
+				      	</tr>
+				      	<tr>
+				      		<td><b>走失</b></td>
+				      		<td>{{abilityItemOptionList[entity.recentmessage.lostRecently]}}</td>
+				      		<td><b>自杀</b></td>
+				      		<td>{{abilityItemOptionList[entity.recentmessage.commitSuicideRecently]}}</td>
+				      	</tr>				      	
+			     	</table>
+			    </div>
+			    
+			    
+			    
+			    <div class="tab-pane fade" id="ability">
+					<br>
+					<table class="table table-bordered table-striped" >
+				      	<tr>
+				      		<td width="15%"><b>日常生活能力</b></td>
+				      		<td width="35%">{{abilityGrade[entity.oldmanMessage.levelDailyLiving]}}</td>
+				      		<td width="15%"><b>精神状态</b></td>
+				      		<td width="35%">{{abilityGrade[entity.oldmanMessage.levelMentality]}}</td>
+				      	</tr>
+				      	<tr>
+				      		<td><b>感知觉与沟通</b></td>
+				      		<td>{{abilityGrade[entity.oldmanMessage.levelPerception]}}</td>
+				      		<td><b>社会参与</b></td>
+				      		<td>{{abilityGrade[entity.oldmanMessage.levelSocialPartipation]}}</td>
+				      	</tr>					   			      	
+			     	</table>
+			    </div>
+			    
+			    
+			    
+			    <div class="tab-pane fade" id="abilityLevel">
+					<br>
+					<table class="table table-bordered table-striped" >
+				      	<tr>
+				      		<td width="25%"><b>老人能力初步等级</b></td>
+				      		<td width="75%">{{abilityLevel[entity.oldmanMessage.primaryLevel]}}</td>
+				      	</tr>
+				      	<tr>
+				      		<td><b>老人能力最终等级</b></td>
+				      		<td>{{abilityLevel[entity.oldmanMessage.finalLevel]}}</td>
+				      	</tr>		
+			     	</table>					
+			    </div>
+			    
+			    
+  			</div> 			
+           <!-- 选项卡结束 -->          
+			
+		</div>
+		
+		
+		<!-- 
+		<div class="modal-footer">						
+			<button class="btn btn-default" data-dismiss="modal" aria-hidden="true">关闭</button>
+		</div>
+		 -->
+		
+	  </div>
+	</div>
+</div>
+	
+	
+	
+	
+	
+	
+	
+		
+</body>
+
+</html>

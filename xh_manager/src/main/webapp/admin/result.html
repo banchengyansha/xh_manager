@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html style="height: 100%">
+   <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+		<meta name="viewport" content="width=device-width, initial-scale=1"></meta>
+		<meta name="description" content=""></meta>
+		<meta name="author" content=""></meta>
+		<title>评估结果</title>
+		
+		<link rel="stylesheet" href="../plugins/bootstrap/css/bootstrap.min.css">
+		<link rel="stylesheet" href="../plugins/adminLTE/css/AdminLTE.css">
+		<link rel="stylesheet" href="../plugins/adminLTE/css/skins/_all-skins.min.css">
+		<link rel="stylesheet" href="../css/style.css">
+		
+		<script src="../plugins/jQuery/jquery-2.2.3.min.js"></script>
+		<script src="../plugins/bootstrap/js/bootstrap.min.js"></script>
+		
+		<script type="text/javascript" src="../plugins/angularjs/angular.min.js"></script>
+		
+	    <script type="text/javascript" src="../plugins/echarts/js/echarts.min.js"></script>
+	    <style type="text/css">
+	    	.breadcrumb > .unactive{
+				color:#ccc;
+			}
+			.breadcrumb>li+li:before {
+			    padding: 0 5px;
+			    color: #ccc;
+			    content: ">";
+			}
+			.breadcrumb>.active {
+			    color: green;
+			}
+	    </style>
+   </head>
+</head>
+
+
+<body >
+	
+	<div>
+          <ol class="breadcrumb">
+              <li class="active"><span><b>基本信息</b></span></li>
+              <li class="active"><span><b>联系人信息</b></span></li>
+              <li class="active"><span><b>老人近况</b></span></li>
+              <li class="active"><span><b>日常生活能力</b></span></li>
+              <li class="active"><span><b>精神状态</b></span></li>
+              <li class="active"><span><b>感知觉与沟通</b></span></li>
+              <li class="active"><span><b>社会参与</b></span></li>
+              <li class="active"><span><b>评估结果</b></span></li>
+              <li class="unactive"><span><b>结果确认</b></span></li>
+          </ol>
+	</div>
+	
+    <h2>
+    	<center>
+    		<b style="font-family:华文隶书; color:green">评估结果</b>
+    	</center>
+    </h2>
+    
+   <div id="container1" style="height: 50%;width: 50%;float: left"></div>
+   <div id="container2" style="height: 50%;width: 50%;float: left"></div>
+   
+   <div id="container3" style="height: 50%;width: 50%;float: left"></div>
+   <div id="container4" style="height: 50%;width: 50%;float: left"></div>
+   
+   <br/>
+   <br/>
+   <div class="btn-toolbar list-toolbar" >
+      <a class="btn btn-success" style="float:right"  href="result_confirm.html">下一步
+      	<span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+      </a>
+  </div>
+	  
+    
+</body>
+	
+   <script type="text/javascript">
+	   
+		var dom1 = document.getElementById("container1");
+		var dom2 = document.getElementById("container2");
+		var dom3 = document.getElementById("container3");
+		var dom4 = document.getElementById("container4");
+		
+		var myChart1 = echarts.init(dom1);
+		var myChart2 = echarts.init(dom2);
+		var myChart3 = echarts.init(dom3);
+		var myChart4 = echarts.init(dom4);
+		
+		window.onresize = myChart1.resize;
+		window.onresize = myChart2.resize;
+		window.onresize = myChart3.resize;
+		window.onresize = myChart4.resize;
+		
+		var app = {};
+		
+		option1 = null;
+		option2 = null;
+		option3 = null;
+		option4 = null;
+		
+		
+		var option4 = {
+			dataset: {
+				source: [
+					['score', '分数', '项目'],
+					[100, 3, '生活能力'],
+					[30, 1, '工作能力'],
+					[60, 2, '时间/空间定向'],
+					[100, 3, '人物定向'],
+					[30, 1, '社会交往能力'],
+				]
+			},
+			title:{
+	            text:"                社会参与",
+	            textStyle:{//标题内容的样式
+	                color:'green',
+	                fontStyle:'normal',
+	                fontWeight:"lighter",
+	                fontFamily:"华文隶书",
+	                fontSize:20
+	            },
+	        },
+			grid: {containLabel: true},
+			xAxis: {name: '分数'},
+			yAxis: {type: 'category'},
+			visualMap: {
+				orient: 'horizontal',
+				left: 'center',
+				min: 10,
+				max: 100,
+				text: ['严重','正常'],
+				// Map the score column to color
+				dimension: 0,
+				inRange: {
+					color: ['#D7DA8B', '#E15457']
+				}
+			},
+			series: [
+				{
+					type: 'bar',
+					encode: {
+						// Map the "amount" column to X axis.
+						x: '分数',
+						// Map the "product" column to Y axis
+						y: '项目'
+					}
+				}
+			]
+		};
+		
+		var option3 = {
+			dataset: {
+				source: [
+					['score', '分数', '项目'],
+					[60, 2, '意识水平'],
+					[100, 3, '视力'],
+					[100, 1, '听力'],
+					[30, 1, '沟通交流']
+				]
+			},
+			title:{
+	            text:"                感知觉与沟通",
+	            textStyle:{//标题内容的样式
+	                color:'green',
+	                fontStyle:'normal',
+	                fontWeight:"lighter",
+	                fontFamily:"华文隶书",
+	                fontSize:20
+	            },
+	        },
+			grid: {containLabel: true},
+			xAxis: {name: '分数'},
+			yAxis: {type: 'category'},
+			visualMap: {
+				orient: 'horizontal',
+				left: 'center',
+				min: 10,
+				max: 100,
+				text: ['严重','正常'],
+				// Map the score column to color
+				dimension: 0,
+				inRange: {
+					color: ['#D7DA8B', '#E15457']
+				}
+			},
+			series: [
+				{
+					type: 'bar',
+					encode: {
+						// Map the "amount" column to X axis.
+						x: '分数',
+						// Map the "product" column to Y axis
+						y: '项目'
+					}
+				}
+			]
+		};
+		
+		var option2 = {
+			dataset: {
+				source: [
+					['score', '分数', '项目'],
+					[60, 2, '认知功能'],
+					[100, 3, '攻击行为'],
+					[30, 1, '抑郁症状']
+				]
+			},
+			title:{
+	            text:"                精神状态",
+	            textStyle:{//标题内容的样式
+	                color:'green',
+	                fontStyle:'normal',
+	                fontWeight:"lighter",
+	                fontFamily:"华文隶书",
+	                fontSize:20
+	            },
+	        },
+			grid: {containLabel: true},
+			xAxis: {name: '分数'},
+			yAxis: {type: 'category'},
+			visualMap: {
+				orient: 'horizontal',
+				left: 'center',
+				min: 10,
+				max: 100,
+				text: ['严重','正常'],
+				// Map the score column to color
+				dimension: 0,
+				inRange: {
+					color: ['#D7DA8B', '#E15457']
+				}
+			},
+			series: [
+				{
+					type: 'bar',
+					encode: {
+						// Map the "amount" column to X axis.
+						x: '分数',
+						// Map the "product" column to Y axis
+						y: '项目'
+					}
+				}
+			]
+		};
+		
+		var option1 = {
+			dataset: {
+				source: [
+					['score', '分数', '项目'],
+					[60, 2, '进食'],
+					[30, 1, '洗澡'],
+					[100, 3, '修饰'],
+					[0, 0, '穿衣'],
+					[100, 3, '大便控制'],
+					[60, 2, '小便控制'],
+					[100, 3, '如厕'],
+					[60, 2, '床椅转移'],
+					[30, 1, '平地行走'],
+					[30, 1, '上下楼梯']
+				]
+			},
+			title:{
+	            text:"                日常生活能力",
+	            textStyle:{//标题内容的样式
+	                color:'green',
+	                fontStyle:'normal',
+	                fontWeight:"lighter",
+	                fontFamily:"华文隶书",
+	                fontSize:20
+	            },
+	        },
+			grid: {containLabel: true},
+			xAxis: {name: '分数'},
+			yAxis: {type: 'category'},
+			visualMap: {
+				orient: 'horizontal',
+				left: 'center',
+				min: 10,
+				max: 100,
+				text: ['严重','正常'],
+				// Map the score column to color
+				dimension: 0,
+				inRange: {
+					color: ['#D7DA8B', '#E15457']
+				}
+			},
+			series: [
+				{
+					type: 'bar',
+					encode: {
+						// Map the "amount" column to X axis.
+						x: '分数',
+						// Map the "product" column to Y axis
+						y: '项目'
+					}
+				}
+			]
+		};
+		
+		if (option1 && typeof option1 === "object") {
+			myChart1.setOption(option1, true);
+		}
+		if (option2 && typeof option2 === "object") {
+			myChart2.setOption(option2, true);
+		}
+		if (option3 && typeof option3 === "object") {
+			myChart3.setOption(option3, true);
+		}
+		if (option4 && typeof option4 === "object") {
+			myChart4.setOption(option4, true);
+		}
+		
+     </script>
+</html>

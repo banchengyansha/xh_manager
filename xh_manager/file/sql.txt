@@ -1,0 +1,240 @@
+
+tb_service 初始化SQL : 
+
+	INSERT INTO tb_service (id , NAME , parent_id , rowspan , colspan) VALUES (NULL,'助餐',0,1,1);
+	INSERT INTO tb_service (id , NAME , parent_id , rowspan , colspan) VALUES (NULL,'助洁',0,1,1);
+	INSERT INTO tb_service (id , NAME , parent_id , rowspan , colspan) VALUES (NULL,'助医',0,1,1);
+	INSERT INTO tb_service (id , NAME , parent_id , rowspan , colspan) VALUES (NULL,'康复',0,1,1);
+	INSERT INTO tb_service (id , NAME , parent_id , rowspan , colspan) VALUES (NULL,'安全',0,1,1);
+	INSERT INTO tb_service (id , NAME , parent_id , rowspan , colspan) VALUES (NULL,'助急',0,1,1);
+	INSERT INTO tb_service (id , NAME , parent_id , rowspan , colspan) VALUES (NULL,'心理慰藉',0,1,1);
+	INSERT INTO tb_service (id , NAME , parent_id , rowspan , colspan) VALUES (NULL,'文娱',0,1,1);
+	INSERT INTO tb_service (id , NAME , parent_id , rowspan , colspan) VALUES (NULL,'代办',0,1,1);
+	INSERT INTO tb_service (id , NAME , parent_id , rowspan , colspan) VALUES (NULL,'托管',0,1,1);
+	INSERT INTO tb_service (id , NAME , parent_id , rowspan , colspan) VALUES (NULL,'其他',0,1,1);
+	
+	INSERT INTO tb_service (id , NAME , parent_id , rowspan , colspan) VALUES (NULL,'营养膳食评估及膳食规划',1,1,1);
+	INSERT INTO tb_service (id , NAME , parent_id , rowspan , colspan) VALUES (NULL,'制餐',1,1,1);
+	INSERT INTO tb_service (id , NAME , parent_id , rowspan , colspan) VALUES (NULL,'送餐',1,1,1);
+	INSERT INTO tb_service (id , NAME , parent_id , rowspan , colspan) VALUES (NULL,'集中用餐',1,1,1);
+	INSERT INTO tb_service (id , NAME , parent_id , rowspan , colspan) VALUES (NULL,'喂饭',1,1,1);
+		
+	INSERT INTO tb_service (id , NAME , parent_id , rowspan , colspan) VALUES (NULL,'居室卫生',2,1,1);
+	INSERT INTO tb_service (id , NAME , parent_id , rowspan , colspan) VALUES (NULL,'上门助浴',2,1,1);
+	INSERT INTO tb_service (id , NAME , parent_id , rowspan , colspan) VALUES (NULL,'机构助浴',2,1,1);
+	INSERT INTO tb_service (id , NAME , parent_id , rowspan , colspan) VALUES (NULL,'衣物清洗和消毒',2,1,1);
+	INSERT INTO tb_service (id , NAME , parent_id , rowspan , colspan) VALUES (NULL,'物品整理和收纳',2,1,1);
+		
+	INSERT INTO tb_service (id , NAME , parent_id , rowspan , colspan) VALUES (NULL,'看病预约',3,1,1);
+	INSERT INTO tb_service (id , NAME , parent_id , rowspan , colspan) VALUES (NULL,'生理指标监测及健康干预',3,1,1);
+	INSERT INTO tb_service (id , NAME , parent_id , rowspan , colspan) VALUES (NULL,'定期健康体检和能力评估',3,1,1);
+	INSERT INTO tb_service (id , NAME , parent_id , rowspan , colspan) VALUES (NULL,'定期检查/给药',3,1,1);
+	INSERT INTO tb_service (id , NAME , parent_id , rowspan , colspan) VALUES (NULL,'给药、观察、消毒',3,1,1);
+	INSERT INTO tb_service (id , NAME , parent_id , rowspan , colspan) VALUES (NULL,'康复锻炼/护理',3,1,1);
+	INSERT INTO tb_service (id , NAME , parent_id , rowspan , colspan) VALUES (NULL,'陪同就医',3,1,1);
+	INSERT INTO tb_service (id , NAME , parent_id , rowspan , colspan) VALUES (NULL,'临终关怀',3,1,1);
+	
+	
+	INSERT INTO tb_service (id , NAME , parent_id , rowspan , colspan) VALUES (NULL,'运动康复',4,1,1);
+	INSERT INTO tb_service (id , NAME , parent_id , rowspan , colspan) VALUES (NULL,'作业康复',4,1,1);
+	INSERT INTO tb_service (id , NAME , parent_id , rowspan , colspan) VALUES (NULL,'理疗康复',4,1,1);
+	
+	INSERT INTO tb_service (id , NAME , parent_id , rowspan , colspan) VALUES (NULL,'安装安全防护措施',5,1,1);
+	INSERT INTO tb_service (id , NAME , parent_id , rowspan , colspan) VALUES (NULL,'定期家庭安全访视',5,1,1);
+	INSERT INTO tb_service (id , NAME , parent_id , rowspan , colspan) VALUES (NULL,'家庭可居住维护',5,1,1);
+	INSERT INTO tb_service (id , NAME , parent_id , rowspan , colspan) VALUES (NULL,'远程安全监护',5,1,1);
+	
+	INSERT INTO tb_service (id , NAME , parent_id , rowspan , colspan) VALUES (NULL,'各类应急',6,1,1);
+	
+	INSERT INTO tb_service (id , NAME , parent_id , rowspan , colspan) VALUES (NULL,'生活技能指导',7,1,1);
+	INSERT INTO tb_service (id , NAME , parent_id , rowspan , colspan) VALUES (NULL,'关怀访视/情感支援',7,1,1);
+	INSERT INTO tb_service (id , NAME , parent_id , rowspan , colspan) VALUES (NULL,'社交/生活陪伴',7,1,1);
+	INSERT INTO tb_service (id , NAME , parent_id , rowspan , colspan) VALUES (NULL,'家庭文化活动及娱乐规划',7,1,1);
+	INSERT INTO tb_service (id , NAME , parent_id , rowspan , colspan) VALUES (NULL,'心理咨询',7,1,1);
+	INSERT INTO tb_service (id , NAME , parent_id , rowspan , colspan) VALUES (NULL,'不良情绪预防及干预',7,1,1);
+	INSERT INTO tb_service (id , NAME , parent_id , rowspan , colspan) VALUES (NULL,'出行规划及交通协助',7,1,1);
+	
+	INSERT INTO tb_service (id , NAME , parent_id , rowspan , colspan) VALUES (NULL,'歌舞、棋牌、健身操等',8,1,1);
+	
+	INSERT INTO tb_service (id , NAME , parent_id , rowspan , colspan) VALUES (NULL,'代办各种事务',9,1,1);
+	
+	INSERT INTO tb_service (id , NAME , parent_id , rowspan , colspan) VALUES (NULL,'日托',10,1,1);
+	INSERT INTO tb_service (id , NAME , parent_id , rowspan , colspan) VALUES (NULL,'全托',10,1,1);
+	
+	INSERT INTO tb_service (id , NAME , parent_id , rowspan , colspan) VALUES (NULL,'入住养老机构/托老所',11,1,1);
+	INSERT INTO tb_service (id , NAME , parent_id , rowspan , colspan) VALUES (NULL,'无障碍改造',11,1,1);
+	INSERT INTO tb_service (id , NAME , parent_id , rowspan , colspan) VALUES (NULL,'辅具配置',11,1,1);
+	INSERT INTO tb_service (id , NAME , parent_id , rowspan , colspan) VALUES (NULL,'购买长期护理保险',11,1,1);
+	INSERT INTO tb_service (id , NAME , parent_id , rowspan , colspan) VALUES (NULL,'购买意外伤害责任保险',11,1,1);
+	
+	
+	
+tb_ability_item 的初始化SQL : 	
+
+	INSERT INTO tb_ability_item(id,NAME,description,part) VALUES(NULL,'进食','指用餐具将食物由容器送到口中、咀嚼、吞咽等过程',);
+	INSERT INTO tb_ability_item(id,NAME,description,part) VALUES(NULL,'洗澡','',);
+	INSERT INTO tb_ability_item(id,NAME,description,part) VALUES(NULL,'修饰','指洗脸、刷牙、梳头、刮脸',);
+	INSERT INTO tb_ability_item(id,NAME,description,part) VALUES(NULL,'穿衣','指穿脱衣服、系扣、拉拉链、穿脱鞋袜、系鞋带等',1);
+	INSERT INTO tb_ability_item(id,NAME,description,part) VALUES(NULL,'大便控制','',1);
+	INSERT INTO tb_ability_item(id,NAME,description,part) VALUES(NULL,'小便控制','',1);
+	INSERT INTO tb_ability_item(id,NAME,description,part) VALUES(NULL,'如厕','包括去厕所、解开衣裤、擦净、整理衣裤、冲水',1);
+	INSERT INTO tb_ability_item(id,NAME,description,part) VALUES(NULL,'床椅转移','',1);
+	INSERT INTO tb_ability_item(id,NAME,description,part) VALUES(NULL,'平地行走','',1);
+	INSERT INTO tb_ability_item(id,NAME,description,part) VALUES(NULL,'上下楼梯	','',1);
+	
+	
+	INSERT INTO tb_ability_item(id,NAME,description,part) VALUES(NULL,'认知功能','',2);
+	INSERT INTO tb_ability_item(id,NAME,description,part) VALUES(NULL,'攻击行为','',2);
+	INSERT INTO tb_ability_item(id,NAME,description,part) VALUES(NULL,'抑郁症状	','',2);
+	
+	
+	
+	INSERT INTO tb_ability_item(id,NAME,description,part) VALUES(NULL,'意识水平','',3);
+	INSERT INTO tb_ability_item(id,NAME,description,part) VALUES(NULL,'视力','若平日带老花镜或近视镜应在佩戴眼镜的情况下评估',3);
+	INSERT INTO tb_ability_item(id,NAME,description,part) VALUES(NULL,'听力','若平时佩戴助听器，应在佩戴助听器的情况下评估',3);
+	INSERT INTO tb_ability_item(id,NAME,description,part) VALUES(NULL,'沟通交流','包括非语言沟通',3);
+	
+	
+	INSERT INTO tb_ability_item(id,NAME,description,part) VALUES(NULL,'生活能力	','',4);
+	INSERT INTO tb_ability_item(id,NAME,description,part) VALUES(NULL,'工作能力	','',4);
+	INSERT INTO tb_ability_item(id,NAME,description,part) VALUES(NULL,'时间/空间定向','',4);
+	INSERT INTO tb_ability_item(id,NAME,description,part) VALUES(NULL,'人物定向	','',4);
+	INSERT INTO tb_ability_item(id,NAME,description,part) VALUES(NULL,'社会交往能力','',4);
+	
+	
+	INSERT INTO tb_ability_item(id,NAME,description,part) VALUES(NULL,'老年痴呆','',5);
+	INSERT INTO tb_ability_item(id,NAME,description,part) VALUES(NULL,'精神疾病','',5);
+	INSERT INTO tb_ability_item(id,NAME,description,part) VALUES(NULL,'跌   倒','近30天内',5);
+	INSERT INTO tb_ability_item(id,NAME,description,part) VALUES(NULL,'噎   食','近30天内',5);
+	INSERT INTO tb_ability_item(id,NAME,description,part) VALUES(NULL,'走   失','近30天内',5);
+	INSERT INTO tb_ability_item(id,NAME,description,part) VALUES(NULL,'自   杀','近30天内',5);	
+	
+	
+tb_ability_item_option 的初始化SQL : 	
+	
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'可独立进食（在合理的时间内独立进食准备好的食物）',1,10);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'需部分帮助(进食过程中需要一定帮助，如协助把持餐具)',1,5);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'需极大帮助或完全依赖他人，或有留置营养管',1,0);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'准备好洗澡水后，可自己独立完成洗澡过程',2,5);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'在洗澡过程中需他人帮助',2,0);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'可自己独立完成',3,5);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'需他人帮助',3,0);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'可独立完成',4,10);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'需部分帮助（能自己穿拖，但需他人帮助整理衣物、系扣/鞋带、拉拉链）',4,5);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'需极大帮助或完全依赖他人',4,0);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'可自己控制大便',5,10);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'偶尔失控（每周<1次），或需要他人提示',5,5);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'完全失控',5,0);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'可自己控制小便',6,10);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'偶尔失控（每周<1次，但每周>1次），或需要他人提示',6,5);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'完全失控',6,0);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'可自己独立完成',7,10);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'需部分帮助（需他人搀扶去厕所、需他人帮忙冲水或整理衣裤等）',7,5);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'需极大帮助或完全依赖他人',7,0);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'可自己独立完成',8,15);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'需部分帮助（需他人搀扶或使用拐杖）',8,10);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'需极大帮助（较大程度上依赖他人搀扶和帮助）',8,5);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'完全依赖他人',8,0);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'可自己独立在平地上行走45米',9,15);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'需部分帮助（因肢体残疾、平衡能力差、过度衰弱、视力等问题，在一定程度上需要他人地搀扶或使用拐杖、助行器等辅助用具）',9,10);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'需极大帮助（因肢体残疾、平衡能力差、过度衰弱、视力等问题，在较大程度上依赖他人搀扶，或坐在轮椅上自行移动）',9,5);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'完全依赖他人',9,0);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'可自己独立上下楼梯（连续上下10-15个台阶）',10,10);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'需部分帮助(需他人搀扶、或扶着楼梯、使用拐杖等)',10,5);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'需极大帮助或完全依赖他人',10,0);		
+	
+	
+	
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'画钟正确（画出一个闭锁圆，指针位置准确），且能回忆出2-3个词',11,0);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'画钟错误（画的圆不闭锁，指针位置准确），或只回忆出0-1个词',11,1);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'已确诊为认知障碍，如老年痴呆',11,2);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'无身体攻击行为（如打/踢/推/咬/抓/摔东西）和语言攻击行为（如骂人、语言威胁、尖叫）',12,0);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'每月有几次身体攻击行为，或每月有几次语言攻击行为',12,1);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'每周有几次身体攻击行为，或每日有几次语言攻击行为',12,2);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'无',13,0);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'情绪低落、不爱说话、不爱梳洗、不爱活动',13,1);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'有自杀念头或自杀行为',13,2);
+	
+	
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'神智清醒，对周围环境警觉为（如骂人、语言威胁、尖叫）',14,0);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'嗜睡，表现为睡眠过度延长。当呼吸或推动患者的肢体时可唤醒，并能进行正确的交谈或执行指令，停止刺激后有继续入睡',14,1);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'昏睡，一般的外界刺激不能使其觉醒，给予较强烈的刺激时可有短时的意识清醒，醒后可简短回答提问，当刺激减弱后又很快进入睡眠状态',14,2);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'昏迷，处于浅昏迷时对疼痛刺激有回避和痛苦表情；处于深昏迷时对刺激无反应（若评定为昏迷，直接评定为重度失能，可不进行以下项目的评估）',14,3);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'能看清书报上的标准字体',15,0);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'能看清楚大字体，但看不清书报上的标准字体',15,1);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'视力有限，看不清报纸大标题，但能辨认物体',15,2);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'辨认物体有困难，但眼睛能跟随物体移动，只能看到光、颜色和形状',15,3);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'没有视力，眼睛不能跟随物体移动',15,4);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'可正常交谈，能听到电视、电话、门铃的声音',16,0);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'在轻声说话或说话距离超过2米时听不清',16,1);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'正常交流有些困难，需在安静的环境或大声说话才能听到',16,2);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'讲话者大声说话或说话很慢，才能部分听见',16,3);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'完全听不见',16,4);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'无困难，能与他人正常沟通和交流',17,0);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'能够表达自己的需要及理解别人的话，但需要增加时间或给予帮助',17,1);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'表达需要与理解有困难，需频繁重复或简化口头表达',17,2);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'不能表达需要或理解他人的话',17,3);
+	
+	
+	
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'除个人生活自理外（如饮食、洗漱、穿戴、二便），能料理家务（如做饭、洗衣）或当家管理事务',18,0);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'除个人生活自理外，能做家务，但欠好，家庭事务安排欠条理',18,1);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'个人生活能自理；只有在他人帮助下才能做些家务，但质量不好',18,2);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'个人基本生活事务能自理（如饮食、二便），在督促下可洗漱',18,3);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'个人基本生活事务能自理（如饮食、二便）需要部分帮助或完全依赖他人帮助',18,4);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'原来熟练的脑力工作或体力技巧性工作可照常进行',19,0);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'原来熟练的脑力工作或体力技巧性工作能力有所下降',19,1);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'原来熟练的脑力工作或体力技巧性工作明显不如以往，部分遗忘',19,2);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'对熟练工作只有一些片段保留，技能全部遗忘',19,3);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'对以往的知识或技能全部磨灭',19,4);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'时间观念（年、月、日、时）清楚；可单独出远门，能很快掌握新环境的方位',20,0);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'时间观念有些下降，年、月、日清楚，但有时相差几天；可单独来往于近街，知道现住地的名称和方位，但不知回家路线',20,1);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'时间观念较差，年、月、日不清楚，可知上半年或下半年；只能单独在家附近行动，对现住地只知名称，不知道方位',20,2);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'时间观念较差，年、月、日不清楚，可知上半年或下半年；只能在左邻右舍串门，对现住地不知名称和方位',20,3);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'无时间观念；不能单独外出',20,4);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'知道周围人们的关系，知道祖孙、叔伯、姑姨、侄子侄女等称谓的意义；可分辨陌生人的大致年龄和身份，可用适当称呼',21,0);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'只知家中亲密近亲的关系，不会分辨陌生人的大致年龄，不能称呼陌生人',21,1);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'只能称呼家中人，或只能照样称呼，不知其关系，不辨辈分',21,2);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'只认识常同住的亲人，可称呼子女或孙子女，可辨熟人和生人',21,3);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'只认识保护人，不辨熟人和生人',21,4);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'参与社会，在社会环境有一定的适应能力，待人接物恰当',22,0);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'能适应单纯环境，主动接触人，初见面时难让人发现智力问题，不能理解引喻语',22,1);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'脱离社会，可被动接触人，不会主动待人，谈话中很多不适词句，容易上当受骗',22,2);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'勉强可与人交往，谈吐内容不清楚，表情不恰当',22,3);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'难以与人接触',22,4);
+	
+	
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'无',23,0);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'轻度',23,1);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'中度',23,2);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'重度',23,3);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'精神分裂症',24,1);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'双相情感障碍',24,2);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'偏执性精神障碍',24,3);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'分裂情感性障碍',24,4);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'癫痫所致精神障碍',24,5);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'精神发育迟滞伴发精神障碍',24,6);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'发生过1次',25,1);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'发生过2次',25,2);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'发生过3次及以上',25,3);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'发生过1次',26,1);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'发生过2次',26,2);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'发生过3次及以上',26,3);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'发生过1次',27,1);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'发生过2次',27,2);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'发生过3次及以上',27,3);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'发生过1次',28,1);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'发生过2次',28,2);		
+	INSERT INTO tb_ability_item_option(id,option_name , item_id,score ) VALUES(NULL,'发生过3次及以上',28,3);	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	

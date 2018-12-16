@@ -1,0 +1,149 @@
+create table tb_oldman_message(
+	id	int(11)	not null AUTO_INCREMENT	comment 'ID',
+	name varchar(50) not null comment'姓名',
+	id_cart	varchar(50) comment '身份证号',
+	gender	char(1)	comment '性别(1:男,2:女)',
+	birthday date	comment '出生日期',
+	nation	varchar(50) comment '民族',
+	belief	int(11) comment '宗教信仰-ID',
+	marital_status	int(11)	comment '婚姻状况-ID',
+	social_security_card varchar(50) comment '社保卡号',
+	culture__degree int(11)	comment '文化程度-ID',
+	living_address	varchar(200) comment '居住地址',
+	living_condition int(11) comment '居住情况',
+	economic_source	 int(11) comment '经济来源',
+	payment_type int(11) comment '医疗费用支付方式',
+	assessment_reason int(11) comment '评估原因',
+	                                
+	createtime	datetime comment '创建时间',
+	updatetime	datetime comment '修改时间',
+	createuser varchar(50) comment '创建人',
+	updateuser varchar(50) comment '修改人'
+	
+	PRIMARY KEY (id)
+)ENGINE=InnoDB DEFAULT CHARSET=utf8
+
+
+
+create table tb_oldman_linkmessage(
+	
+	id int(11) NOT NULL AUTO_INCREMENT comment 'ID',
+	
+	provider_name   varchar(50)   comment '信息提供者姓名',	
+	provider_relation int(11)  comment '提供者与老人关系',
+                                       
+	linkman1_name   varchar(50)    comment '第一联系人姓名',	
+	linkman1_phone  varchar(50)    comment '第一联系人手机',	
+	linkman2_name   varchar(50)    comment '第二联系人姓名',	
+	linkman2_phone  varchar(50)    comment '第二联系人手机',	
+	linkman3_name   varchar(50)    comment '第三联系人姓名',	
+	linkman3_phone  varchar(50)    comment '第三联系人手机',	
+	                    
+	evaluate_name  varchar(50)     comment '评估人姓名',	
+	evaluate_phone  varchar(50)    comment '评估人电话',	
+	evaluate_group  varchar(50)    comment '评估人机构 ',		
+	evaluate_address varchar(50)   comment '评估人居住地址',	
+	evaluate_email varchar(50)     comment '评估人邮箱',
+	
+	evaluate_createtime datetime DEFAULT NULL COMMENT '创建时间',
+  	evaluate_updatetime datetime DEFAULT NULL COMMENT '修改时间',
+	PRIMARY KEY (`id`)		
+)ENGINE=InnoDB DEFAULT CHARSET=utf8
+
+
+
+CREATE TABLE `tb_oldman_recentmessage` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `senile_dementia` int(11) DEFAULT NULL COMMENT '老年痴呆',
+  `mental_illness` int(11) DEFAULT NULL COMMENT '精神疾病',
+  `fall_recently` int(11) DEFAULT NULL COMMENT '跌倒',
+  `choking_recently` int(11) DEFAULT NULL COMMENT '噎食',
+  `lost_recently` int(11) DEFAULT NULL COMMENT '走失',
+  `commit_suicide_recently` int(11) DEFAULT NULL COMMENT '自杀',
+  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
+  `update_time` datetime DEFAULT NULL COMMENT '修改时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
+
+
+
+
+CREATE TABLE `tb_oldman_livingmessage` (
+  `id` int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `living_eat` int(11) DEFAULT NULL COMMENT '进食',
+  `living_bathe` int(11) DEFAULT NULL COMMENT '洗澡',
+  `living_decorate` int(11) DEFAULT NULL COMMENT '修饰',
+  `living_dress` int(11) DEFAULT NULL COMMENT '穿衣',
+  `living_stool_control` int(11) DEFAULT NULL COMMENT '大便控制',
+  `living_urination_control` int(11) DEFAULT NULL COMMENT '小便控制',
+  `living_toilet` int(11) DEFAULT NULL COMMENT '如厕',
+  `living_bed_chair_transfer` int(11) DEFAULT NULL COMMENT '床椅转移',
+  `living_walk` int(11) DEFAULT NULL COMMENT '平地行走',
+  `living_stairs` int(11) DEFAULT NULL COMMENT '上下楼梯',
+  `create_time` datetime DEFAULT NULL COMMENT '创建时间',
+  `update_time` datetime DEFAULT NULL COMMENT '修改时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
+
+
+
+	
+CREATE TABLE tb_oldman_mentality(
+	id int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+	cognitive_function int(11) comment '认知功能',
+	aggressive_behavior int(11) comment '攻击行为',
+	depressive_symptoms int(11) comment '抑郁症状',
+	create_time datetime DEFAULT NULL COMMENT '创建时间',
+  	update_time datetime DEFAULT NULL COMMENT '修改时间',
+  	PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
+
+
+
+
+CREATE TABLE tb_oldman_perception(
+	id int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+	consciousness_level int(11) comment '意识水平',
+	vision_level int(11) comment '视力',
+	hearing_level int(11) comment '听力',
+	communication_level int(11) comment '沟通交流',
+	create_time datetime DEFAULT NULL COMMENT '创建时间',
+  	update_time datetime DEFAULT NULL COMMENT '修改时间',
+  	PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
+
+
+
+
+社会参与  
+
+CREATE TABLE tb_oldman_social_participation
+	living_ability int(11) comment '生活能力',
+	job_ability int(11) comment '工作能力',
+	time_space_orientation int(11) comment '时间/空间定向',
+	personage_orientation int(11) comment '人物定向',
+	communication_ability int(11) comment '社会交往能力',
+	create_time datetime DEFAULT NULL COMMENT '创建时间',
+  	update_time datetime DEFAULT NULL COMMENT '修改时间',
+  	PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8	
+
+
+
+	
+能力等级表 
+CREATE TABLE tb_oldman_ability_grade(
+	id int(11) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+	lower_limit_score int(11) comment '分数下限',
+	upper_limit_score int(11) comment '分数上限',
+	ability_cat int(11) comment '能力分类',
+	ability_grade int(11) comment '能力等级',
+	PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8
+
+
+
+
+
+
+

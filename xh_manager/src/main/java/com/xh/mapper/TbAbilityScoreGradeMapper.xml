@@ -1,0 +1,244 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.xh.mapper.TbAbilityScoreGradeMapper" >
+  <resultMap id="BaseResultMap" type="com.xh.pojo.TbAbilityScoreGrade" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="lower_limit_score" property="lowerLimitScore" jdbcType="INTEGER" />
+    <result column="upper_limit_score" property="upperLimitScore" jdbcType="INTEGER" />
+    <result column="ability_cat" property="abilityCat" jdbcType="INTEGER" />
+    <result column="ability_desc" property="abilityDesc" jdbcType="VARCHAR" />
+    <result column="ability_grade" property="abilityGrade" jdbcType="INTEGER" />
+    <result column="ability_grade_desc" property="abilityGradeDesc" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, lower_limit_score, upper_limit_score, ability_cat, ability_desc, ability_grade, 
+    ability_grade_desc
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.xh.pojo.TbAbilityScoreGradeExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tb_ability_score_grade
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_ability_score_grade
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from tb_ability_score_grade
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.xh.pojo.TbAbilityScoreGradeExample" >
+    delete from tb_ability_score_grade
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.xh.pojo.TbAbilityScoreGrade" >
+    insert into tb_ability_score_grade (id, lower_limit_score, upper_limit_score, 
+      ability_cat, ability_desc, ability_grade, 
+      ability_grade_desc)
+    values (#{id,jdbcType=INTEGER}, #{lowerLimitScore,jdbcType=INTEGER}, #{upperLimitScore,jdbcType=INTEGER}, 
+      #{abilityCat,jdbcType=INTEGER}, #{abilityDesc,jdbcType=VARCHAR}, #{abilityGrade,jdbcType=INTEGER}, 
+      #{abilityGradeDesc,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xh.pojo.TbAbilityScoreGrade" >
+    insert into tb_ability_score_grade
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="lowerLimitScore != null" >
+        lower_limit_score,
+      </if>
+      <if test="upperLimitScore != null" >
+        upper_limit_score,
+      </if>
+      <if test="abilityCat != null" >
+        ability_cat,
+      </if>
+      <if test="abilityDesc != null" >
+        ability_desc,
+      </if>
+      <if test="abilityGrade != null" >
+        ability_grade,
+      </if>
+      <if test="abilityGradeDesc != null" >
+        ability_grade_desc,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="lowerLimitScore != null" >
+        #{lowerLimitScore,jdbcType=INTEGER},
+      </if>
+      <if test="upperLimitScore != null" >
+        #{upperLimitScore,jdbcType=INTEGER},
+      </if>
+      <if test="abilityCat != null" >
+        #{abilityCat,jdbcType=INTEGER},
+      </if>
+      <if test="abilityDesc != null" >
+        #{abilityDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="abilityGrade != null" >
+        #{abilityGrade,jdbcType=INTEGER},
+      </if>
+      <if test="abilityGradeDesc != null" >
+        #{abilityGradeDesc,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.xh.pojo.TbAbilityScoreGradeExample" resultType="java.lang.Integer" >
+    select count(*) from tb_ability_score_grade
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update tb_ability_score_grade
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.lowerLimitScore != null" >
+        lower_limit_score = #{record.lowerLimitScore,jdbcType=INTEGER},
+      </if>
+      <if test="record.upperLimitScore != null" >
+        upper_limit_score = #{record.upperLimitScore,jdbcType=INTEGER},
+      </if>
+      <if test="record.abilityCat != null" >
+        ability_cat = #{record.abilityCat,jdbcType=INTEGER},
+      </if>
+      <if test="record.abilityDesc != null" >
+        ability_desc = #{record.abilityDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.abilityGrade != null" >
+        ability_grade = #{record.abilityGrade,jdbcType=INTEGER},
+      </if>
+      <if test="record.abilityGradeDesc != null" >
+        ability_grade_desc = #{record.abilityGradeDesc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update tb_ability_score_grade
+    set id = #{record.id,jdbcType=INTEGER},
+      lower_limit_score = #{record.lowerLimitScore,jdbcType=INTEGER},
+      upper_limit_score = #{record.upperLimitScore,jdbcType=INTEGER},
+      ability_cat = #{record.abilityCat,jdbcType=INTEGER},
+      ability_desc = #{record.abilityDesc,jdbcType=VARCHAR},
+      ability_grade = #{record.abilityGrade,jdbcType=INTEGER},
+      ability_grade_desc = #{record.abilityGradeDesc,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xh.pojo.TbAbilityScoreGrade" >
+    update tb_ability_score_grade
+    <set >
+      <if test="lowerLimitScore != null" >
+        lower_limit_score = #{lowerLimitScore,jdbcType=INTEGER},
+      </if>
+      <if test="upperLimitScore != null" >
+        upper_limit_score = #{upperLimitScore,jdbcType=INTEGER},
+      </if>
+      <if test="abilityCat != null" >
+        ability_cat = #{abilityCat,jdbcType=INTEGER},
+      </if>
+      <if test="abilityDesc != null" >
+        ability_desc = #{abilityDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="abilityGrade != null" >
+        ability_grade = #{abilityGrade,jdbcType=INTEGER},
+      </if>
+      <if test="abilityGradeDesc != null" >
+        ability_grade_desc = #{abilityGradeDesc,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xh.pojo.TbAbilityScoreGrade" >
+    update tb_ability_score_grade
+    set lower_limit_score = #{lowerLimitScore,jdbcType=INTEGER},
+      upper_limit_score = #{upperLimitScore,jdbcType=INTEGER},
+      ability_cat = #{abilityCat,jdbcType=INTEGER},
+      ability_desc = #{abilityDesc,jdbcType=VARCHAR},
+      ability_grade = #{abilityGrade,jdbcType=INTEGER},
+      ability_grade_desc = #{abilityGradeDesc,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
